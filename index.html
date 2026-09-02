@@ -6,7 +6,7 @@
 <title>ドリームクラフト＆ビッグボス｜楽天スーパーSALEの歩き方</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&family=Fredoka:wght@400;500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
 
 <style>
   /* ============================================================
@@ -29,7 +29,8 @@
     --paper:#fffdf2;       /* カード内の生成り */
     --paper-2:#f4ecd8;
 
-    --font-pop:'Mochiy Pop One','Zen Kaku Gothic New',sans-serif;
+    /* タイトル等は Zen Kaku Gothic New（太め）で統一。数字のみ Fredoka */
+    --font-pop:'Zen Kaku Gothic New','Hiragino Sans',sans-serif;
     --font-num:'Fredoka','Zen Kaku Gothic New',sans-serif;
     --font-body:'Zen Kaku Gothic New','Hiragino Sans',sans-serif;
   }
@@ -217,7 +218,7 @@
   .section{ padding:60px 0; }
   .sec-head{ text-align:center; margin-bottom:36px; }
   .sec-head h2{
-    font-family:var(--font-pop); font-size:clamp(27px,6.4vw,40px);
+    font-family:var(--font-pop); font-weight:900; font-size:clamp(27px,6.4vw,40px);
     line-height:1.4; margin-top:12px; color:var(--ink);
   }
   .sec-head .sub{
@@ -241,7 +242,7 @@
     content:""; position:absolute; left:48px; top:-13px;
     border-left:10px solid transparent; border-right:10px solid transparent; border-bottom:14px solid #fff;
   }
-  .bubble .lead{ margin:0 0 10px; font-family:var(--font-pop); font-size:19px; color:var(--red-deep); }
+  .bubble .lead{ margin:0 0 10px; font-family:var(--font-pop); font-weight:900; font-size:19px; color:var(--red-deep); }
   .bubble p{ margin:0 0 10px; font-size:16px; font-weight:700; line-height:1.85; }
   .bubble p:last-child{ margin-bottom:0; }
 
@@ -264,9 +265,9 @@
     border-top:5px solid var(--yellow); border-bottom:5px solid var(--yellow);
   }
   .engrave .tag{ font-family:var(--font-num); font-size:12.5px; letter-spacing:.2em; font-weight:600; opacity:.85; }
-  .engrave .pct{ font-family:var(--font-pop); font-size:clamp(58px,15vw,104px); color:var(--yellow); line-height:1; margin-top:10px; }
+  .engrave .pct{ font-family:var(--font-pop); font-weight:900; font-size:clamp(58px,15vw,104px); color:var(--yellow); line-height:1; margin-top:10px; }
   .engrave .pct small{ font-size:.42em; margin-left:.1em; }
-  .engrave .name{ margin-top:12px; font-family:var(--font-pop); font-size:19px; }
+  .engrave .name{ margin-top:12px; font-family:var(--font-pop); font-weight:900; font-size:19px; }
   .engrave .desc{ margin:10px auto 0; max-width:30em; font-size:14px; font-weight:700; opacity:.9; }
   .engrave .note{ margin-top:16px; font-size:12px; opacity:.6; }
 
@@ -279,7 +280,7 @@
     padding-bottom:12px; margin-bottom:20px;
     border-bottom:3px solid rgba(255,255,255,.28);
   }
-  .ngroup-head h3{ font-family:var(--font-pop); font-size:clamp(19px,4.6vw,25px); color:#fff; }
+  .ngroup-head h3{ font-family:var(--font-pop); font-weight:900; font-size:clamp(19px,4.6vw,25px); color:#fff; }
   .ngroup-head .en{ font-family:var(--font-num); font-size:12px; letter-spacing:.14em; color:var(--yellow); font-weight:600; }
 
   .pgrid{ display:grid; grid-template-columns:repeat(4,1fr); gap:18px; }
@@ -297,7 +298,7 @@
 
   .naire-all{ text-align:center; margin-top:44px; }
   .btn-big{
-    display:inline-block; font-family:var(--font-pop); font-size:17px;
+    display:inline-block; font-family:var(--font-pop); font-weight:900; font-size:17px;
     padding:18px 40px; border-radius:999px;
     background:var(--yellow); color:var(--ink);
     border:4px solid var(--ink); box-shadow:6px 6px 0 rgba(0,0,0,.35);
@@ -313,7 +314,7 @@
   .pt-day{ font-family:var(--font-num); font-size:12px; letter-spacing:.14em; font-weight:600; opacity:.7; }
   .pt-date{ font-family:var(--font-num); font-size:clamp(28px,6vw,34px); font-weight:700; margin-top:6px; }
   .pt-time{ font-size:14.5px; font-weight:700; margin-top:2px; }
-  .pt-x2{ display:inline-block; margin-top:12px; font-family:var(--font-pop); font-size:40px; }
+  .pt-x2{ display:inline-block; margin-top:12px; font-family:var(--font-pop); font-weight:900; font-size:40px; }
   .pt-card.d1 .pt-x2{ color:var(--red); }
   .pt-card.d2 .pt-x2{ color:var(--blue); }
   .pt-foot{ margin-top:22px; text-align:center; font-size:13px; font-weight:700; opacity:.75; }
@@ -339,9 +340,10 @@
   .ticket .tname{ margin-top:12px; font-family:var(--font-pop); font-size:15px; }
   .ticket .tdesc{ margin-top:6px; font-size:12.5px; font-weight:700; opacity:.72; }
   .ticket .tget{
-    display:inline-block; margin-top:14px; font-family:var(--font-pop); font-size:13px;
+    display:inline-block; margin-top:14px; font-family:var(--font-pop); font-weight:700; font-size:13px;
     padding:9px 20px; border-radius:999px; background:var(--ink); color:var(--yellow);
   }
+  .cd-bubble, .nav-panel a, .ticket .tname{ font-weight:700; }
 
   /* ============ 対象ショップ限定クーポン（フラッグ） ============ */
   .bunting{ background:var(--yellow); padding:34px 0; border-top:4px dashed var(--ink); border-bottom:4px dashed var(--ink); }
@@ -383,7 +385,7 @@
 
   /* ============ CLOSING / FOOTER ============ */
   .closing{ background:var(--ink); color:var(--yellow); text-align:center; padding:56px 0 30px; }
-  .closing h2{ font-family:var(--font-pop); font-size:clamp(26px,6vw,36px); line-height:1.45; }
+  .closing h2{ font-family:var(--font-pop); font-weight:900; font-size:clamp(26px,6vw,36px); line-height:1.45; }
   .closing p{ margin:16px auto 26px; max-width:26em; font-size:15px; font-weight:700; color:#f4e7b0; }
   .closing .btn-big{ box-shadow:6px 6px 0 rgba(0,0,0,.45); }
   .closing footer{ margin-top:44px; padding-top:20px; border-top:1px solid rgba(255,229,0,.2); font-size:12px; color:#c9b98e; font-weight:700; }
