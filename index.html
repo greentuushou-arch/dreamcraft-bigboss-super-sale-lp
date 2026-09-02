@@ -315,6 +315,16 @@
   .shelf .shelf-all{ text-align:center; margin-top:24px; }
   .shelf .btn-big{ background:var(--red); color:#fff; }
 
+  /* ============ ボジョレー・ヌーヴォー バナー ============ */
+  .nouveau{ background:var(--yellow); padding:36px 0 44px; border-top:5px solid var(--ink); }
+  .nouveau a{ display:block; }
+  .nouveau img{ width:100%; height:auto; display:block; border:4px solid var(--ink); border-radius:16px; }
+  .nouveau-note{
+    margin:14px auto 0; max-width:38em; text-align:center;
+    font-size:14px; font-weight:700; line-height:1.75; color:var(--ink);
+  }
+  .nouveau-note a{ color:var(--red-deep); font-weight:800; text-decoration:underline; text-underline-offset:3px; white-space:nowrap; }
+
   /* ============ CLOSING / FOOTER ============ */
   .closing{ background:var(--ink); color:var(--yellow); text-align:center; padding:56px 0 30px; }
   .closing h2{ font-family:var(--font-pop); font-weight:800; font-size:clamp(26px,6vw,36px); line-height:1.45; }
@@ -770,13 +780,23 @@
     </div>
   </section>
 
+  <!-- ============ ボジョレー・ヌーヴォー 2026（予約） ============ -->
+  <section class="nouveau reveal">
+    <div class="wrap">
+      <a href="https://search.rakuten.co.jp/search/mall/%E3%83%9C%E3%82%B8%E3%83%A7%E3%83%AC%E3%83%BC%E3%83%8C%E3%83%BC%E3%83%9C%E3%83%BC/?sid=296346" target="_blank" rel="noopener">
+        <img src="images/nouveau2026.jpg" alt="ボジョレー・ヌーヴォー 2026 ジョルジュ デュブッフ 解禁日 11/19(木) ご予約受付中">
+      </a>
+      <p class="nouveau-note">解禁日 11/19(木)。ジョルジュ デュブッフのボジョレー・ヌーヴォー 2026、<a href="https://search.rakuten.co.jp/search/mall/%E3%83%9C%E3%82%B8%E3%83%A7%E3%83%AC%E3%83%BC%E3%83%8C%E3%83%BC%E3%83%9C%E3%83%BC/?sid=296346" target="_blank" rel="noopener">ご予約受付中です ▶</a></p>
+    </div>
+  </section>
+
   <!-- ============ CLOSING ============ -->
   <section class="closing">
     <div class="wrap">
       <h2>人気の一本も、<br>名前を贈る一本も。</h2>
       <p>売れ筋のお酒からお得に、名入れギフトはクーポンで10%OFF。楽天スーパーSALEのあいだにどうぞ。</p>
       <a class="btn-big" href="https://www.rakuten.co.jp/d-craft/" target="_blank" rel="noopener">ドリームクラフト＆ビッグボスをのぞく</a>
-      <div class="devnote">制作メモ（公開前に消す）：名入れ10%OFFのクーポン取得URLを &lt;script&gt;内の COUPON_URL に入れる（data-coupon 要素へ一括反映）。それ以外のクーポン画像・リンクは入稿済。</div>
+      <div class="devnote">制作メモ（公開前に消す）：クーポン・リンク・画像はすべて入稿済。会期前に商品の価格・在庫を最終確認のうえ、この行を削除して公開。</div>
       <footer>ドリームクラフト＆ビッグボス｜楽天スーパーSALE 特設ページ｜2026.9.4 20:00 – 9.11 1:59</footer>
     </div>
   </section>
@@ -881,7 +901,7 @@
   }
 
   /* ---- クーポン取得URLの一括反映（未定の間は # のまま） ---- */
-  var COUPON_URL = ''; /* 例: 'https://coupon.rakuten.co.jp/getCoupon?getkey=xxxx&rt=' */
+  var COUPON_URL = 'https://coupon.rakuten.co.jp/getCoupon?getkey=QkZSSy1RSEZQLVdETE0tR1FLVw--&rt='; /* 名入れ商品クーポン 10%OFF */
   if(COUPON_URL){
     document.querySelectorAll('[data-coupon]').forEach(function(a){
       a.setAttribute('href', COUPON_URL);
