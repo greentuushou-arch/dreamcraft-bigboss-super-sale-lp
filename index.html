@@ -256,17 +256,33 @@
   .cd-bubble{ font-weight:700; }
 
   /* ============ クーポン画像スロット（カウントダウン直下） ============ */
-  .coupon-slot{ background:var(--yellow); padding:30px 0 4px; text-align:center; }
-  .coupon-slot .frame{
-    margin:0 auto; max-width:600px; aspect-ratio:3/1;
-    border:3px dashed var(--ink); border-radius:16px;
-    display:flex; align-items:center; justify-content:center; padding:14px;
+  .coupon-slot{ background:var(--yellow); padding:30px 0 6px; }
+  .coupon-slot .placeholder{
+    display:flex; align-items:center; justify-content:center; text-align:center;
     background:
       repeating-linear-gradient(135deg, rgba(26,18,6,.08) 0 2px, transparent 2px 16px),
       #fff;
-    font-size:13px; font-weight:700; color:var(--ink); line-height:1.7;
+    color:var(--ink); font-size:12.5px; font-weight:700; line-height:1.7; padding:12px;
   }
-  .coupon-slot .frame img{ width:100%; height:100%; object-fit:contain; }
+  /* 上段：正方形〜横長のクーポンを2つ横並び（角丸OK） */
+  .coupon-pair{ display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  .coupon-pair > *{ border-radius:14px; overflow:hidden; }
+  .coupon-pair .placeholder{ aspect-ratio:1.9/1; border:3px dashed var(--ink); border-radius:14px; }
+  .coupon-pair a{ display:block; }
+  .coupon-pair img{ width:100%; height:auto; display:block; }
+  /* 下段：細い帯クーポンを3段（角丸なし・そのまま貼る） */
+  .coupon-bands{ display:flex; flex-direction:column; gap:8px; margin-top:14px; }
+  .coupon-bands a{ display:block; }
+  .coupon-bands img{ width:100%; height:auto; display:block; border-radius:0; }
+  .coupon-bands .placeholder{ aspect-ratio:1080/210; border:2px dashed var(--ink); border-radius:0; }
+  .coupon-note{
+    margin:16px auto 0; max-width:36em; text-align:center;
+    font-size:14.5px; font-weight:700; line-height:1.7; color:var(--ink);
+  }
+  .coupon-note a{
+    display:inline-block; margin-top:4px;
+    color:var(--red-deep); font-weight:800; text-decoration:underline; text-underline-offset:3px;
+  }
 
   /* ============ 人気商品 / ビールギフト（横スクロール棚） ============ */
   .shelf{ background:var(--yellow); padding:50px 0 46px; }
@@ -372,11 +388,30 @@
     </div>
   </section>
 
-  <!-- ============ クーポン画像（カウントダウン直下・後日差し替え） ============ -->
+  <!-- ============ クーポン（カウントダウン直下） ============ -->
   <section class="coupon-slot">
     <div class="wrap">
-      <!-- ▼差し替え：クーポン画像。<a href="取得URL"> でラップ可 -->
-      <div class="frame">クーポン画像（後日ここに差し込み）</div>
+
+      <!-- 上段：クーポン画像を2つ横並び（後日差し替え。<a href="取得URL"> でラップ可・角丸OK） -->
+      <div class="coupon-pair">
+        <div class="placeholder">クーポン画像①<br>（後日ここに）</div>
+        <div class="placeholder">クーポン画像②<br>（後日ここに）</div>
+      </div>
+
+      <!-- 下段：細い帯クーポン3段（角丸なし・画像そのまま。①のみ入稿済み） -->
+      <div class="coupon-bands">
+        <a href="https://maker-showroom.rakuten.co.jp/sapporo/?l-id=adsol_2429_shop_d-craft" target="_blank" rel="noopener">
+          <img src="images/coupon-band-sapporo.jpg" alt="対象アイテムに使える 最大300円OFFクーポン｜サッポロ ※獲得・利用条件あり">
+        </a>
+        <div class="placeholder">帯クーポン②（後日ここに）</div>
+        <div class="placeholder">帯クーポン③（後日ここに）</div>
+      </div>
+
+      <p class="coupon-note">
+        サッポロのキャンペーン300円OFFクーポンもあります！<br>
+        <a href="https://maker-showroom.rakuten.co.jp/sapporo/?l-id=adsol_2429_shop_d-craft" target="_blank" rel="noopener">サッポロ特設ページでクーポンをGET ▶</a>
+      </p>
+
     </div>
   </section>
 
@@ -733,7 +768,7 @@
       <h2>人気の一本も、<br>名前を贈る一本も。</h2>
       <p>売れ筋のお酒からお得に、名入れギフトはクーポンで10%OFF。楽天スーパーSALEのあいだにどうぞ。</p>
       <a class="btn-big" href="https://www.rakuten.co.jp/d-craft/" target="_blank" rel="noopener">ドリームクラフト＆ビッグボスをのぞく</a>
-      <div class="devnote">制作メモ（公開前に消す）：①カウントダウン直下の「クーポン画像」を差し込み　②クーポン取得URL（&lt;script&gt;内の COUPON_URL に入れると data-coupon 要素へ一括反映）　を差し替えてから公開。</div>
+      <div class="devnote">制作メモ（公開前に消す）：①クーポン上段2枠・帯②③（`.coupon-slot` の `.placeholder`）に画像を差し込み（帯①サッポロは入稿済）　②名入れ10%OFFのクーポン取得URL（&lt;script&gt;内の COUPON_URL に入れると data-coupon 要素へ一括反映）　を差し替えてから公開。</div>
       <footer>ドリームクラフト＆ビッグボス｜楽天スーパーSALE 特設ページ｜2026.9.4 20:00 – 9.11 1:59</footer>
     </div>
   </section>
