@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ドリームクラフト＆ビッグボス｜楽天スーパーSALEの歩き方</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&family=Fredoka:wght@400;500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+<style>
+  /* ============================================================
+     ドリームクラフト＆ビッグボス｜楽天スーパーSALE 特設ページ
+     配色はFV看板から採取（黄地・赤の描き文字・青のテーブル・
+     ジャケットのオレンジ/グリーン）。1ファイル完結・モバイル
+     ファースト。カウントダウン（パタパタ時計）はスタッフ制作
+     ドラフトの意匠をそのまま採用。
+     ============================================================ */
+  :root{
+    --yellow:#ffe500;      /* 看板の地色。ページ全体の下地 */
+    --yellow-deep:#f0b400;
+    --red:#e5231b;         /* 看板の「SALE」。見出し・価格・アクセント */
+    --red-deep:#b3160f;
+    --blue:#1f52c8;        /* 看板テーブルの青 */
+    --blue-deep:#143a95;
+    --green:#2f9e52;       /* スカーフの緑 */
+    --orange:#f0803c;      /* アロハシャツのオレンジ */
+    --ink:#1a1206;         /* 太アウトラインの黒 */
+    --paper:#fffdf2;       /* カード内の生成り */
+    --paper-2:#f4ecd8;
+
+    --font-pop:'Mochiy Pop One','Zen Kaku Gothic New',sans-serif;
+    --font-num:'Fredoka','Zen Kaku Gothic New',sans-serif;
+    --font-body:'Zen Kaku Gothic New','Hiragino Sans',sans-serif;
+  }
+
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; }
+  html{ scroll-behavior:auto; scroll-padding-top:72px; }
+  @media (min-width:760px){ html{ scroll-padding-top:140px; } }
+  body{
+    background:var(--yellow);
+    color:var(--ink);
+    font-family:var(--font-body);
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{ max-width:100%; display:block; }
+  a{ color:inherit; text-decoration:none; }
+  h1,h2,h3{ margin:0; text-wrap:balance; }
+  @media (prefers-reduced-motion:reduce){
+    .confetti span{ animation:none !important; opacity:0 !important; }
+    .fv-media::after{ display:none !important; }
+    .reveal{ opacity:1 !important; transform:none !important; }
+  }
+
+  /* 固定幅の“ショップページ”キャンバス。PCでは中央寄せ、外側は黄で塗り足し */
+  .page{ max-width:820px; margin:0 auto; background:var(--yellow); }
+  .wrap{ padding:0 24px; }
+  @media (max-width:600px){ .wrap{ padding:0 17px; } }
+
+  /* ============ SITE HEADER ============ */
+  .site-header{
+    position:sticky; top:0; z-index:50;
+    background:var(--ink);
+    border-bottom:4px solid var(--yellow);
+  }
+  .site-header .row{
+    max-width:820px; margin:0 auto; position:relative;
+    display:flex; align-items:center; justify-content:center;
+    height:60px; padding:0 24px;
+  }
+  .site-header .shop-link{
+    font-family:var(--font-num); font-weight:600;
+    font-size:14px; letter-spacing:.04em; color:var(--yellow);
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:100%;
+  }
+  .site-header .shop-link:hover{ text-decoration:underline; }
+  .burger{
+    appearance:none; background:none; border:none; cursor:pointer;
+    width:40px; height:40px; padding:0;
+    position:absolute; right:18px; top:50%; transform:translateY(-50%);
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:5px;
+  }
+  .burger span{ display:block; width:24px; height:3px; background:var(--yellow); border-radius:2px; transition:transform .25s ease,opacity .25s ease; }
+  .burger[aria-expanded="true"] span:nth-child(1){ transform:translateY(8px) rotate(45deg); }
+  .burger[aria-expanded="true"] span:nth-child(2){ opacity:0; }
+  .burger[aria-expanded="true"] span:nth-child(3){ transform:translateY(-8px) rotate(-45deg); }
+  .nav-panel{
+    position:fixed; inset:60px 0 auto 0; z-index:49;
+    background:var(--ink); border-bottom:4px solid var(--yellow);
+    max-height:0; overflow:hidden; transition:max-height .3s ease;
+  }
+  .nav-panel.open{ max-height:440px; }
+  .nav-panel ul{ list-style:none; margin:0 auto; padding:8px 24px 18px; max-width:820px; }
+  .nav-panel li{ border-top:1px solid rgba(255,229,0,.18); }
+  .nav-panel li:first-child{ border-top:none; }
+  .nav-panel a{ display:block; padding:14px 4px; font-family:var(--font-pop); font-size:15px; color:#fff; }
+  .nav-panel a:hover{ color:var(--yellow); }
+  @media (min-width:760px){ .burger{ display:none; } .nav-panel{ display:none; } }
+
+  /* 横並びジャンプナビ（PCのみ） */
+  .section-nav{ display:none; }
+  @media (min-width:760px){
+    .section-nav{
+      display:flex; flex-wrap:wrap; justify-content:center; gap:10px;
+      background:var(--yellow); padding:16px 24px;
+      border-bottom:4px solid var(--ink);
+      position:sticky; top:64px; z-index:40;
+    }
+    .section-nav a{
+      font-family:var(--font-num); font-weight:600; font-size:13px;
+      color:var(--ink); background:#fff; border:3px solid var(--ink);
+      padding:8px 16px; border-radius:999px; white-space:nowrap;
+      box-shadow:4px 4px 0 var(--ink);
+      transition:transform .15s ease,box-shadow .15s ease;
+    }
+    .section-nav a:hover{ transform:translate(-2px,-2px); box-shadow:6px 6px 0 var(--ink); }
+  }
+
+  /* ============ FV ============ */
+  .fv{
+    position:relative;
+    background:var(--yellow);
+    border-bottom:5px solid var(--ink);
+    text-align:center;
+    padding:0 0 44px;
+    overflow:hidden;
+  }
+  .fv-media{ position:relative; overflow:hidden; }
+  .fv-hero{ width:100%; height:auto; }
+  /* シャインスイープ（かわすいテンプレ同様、JSでランダム間隔に発火） */
+  .fv-media::after{
+    content:""; position:absolute; top:-20%; bottom:-20%; left:-65%;
+    width:45%;
+    background:linear-gradient(100deg, transparent 0%, rgba(255,255,255,.0) 20%, rgba(255,255,255,.55) 50%, rgba(255,255,255,0) 80%, transparent 100%);
+    transform:skewX(-18deg);
+    pointer-events:none;
+  }
+  .fv-media.shine::after{ animation:shine-sweep 1.25s ease-in-out; }
+  @keyframes shine-sweep{ from{ left:-65%; } to{ left:130%; } }
+
+  .confetti{ position:absolute; inset:0; pointer-events:none; overflow:hidden; z-index:5; }
+  .confetti span{
+    position:absolute; top:-36px; width:13px; height:13px; opacity:.95;
+    animation:confetti-fall linear infinite;
+  }
+  .confetti span:nth-child(5n){ background:var(--red); }
+  .confetti span:nth-child(5n+1){ background:#fff; }
+  .confetti span:nth-child(5n+2){ background:var(--blue); border-radius:50%; }
+  .confetti span:nth-child(5n+3){ background:var(--green); }
+  .confetti span:nth-child(5n+4){ background:var(--orange); border-radius:50%; }
+  @keyframes confetti-fall{
+    0%{ transform:translateY(-10%) rotate(0deg); }
+    100%{ transform:translateY(1180%) rotate(560deg); }
+  }
+
+  /* ---- パタパタ時計カウントダウン（スタッフドラフトの意匠を踏襲） ---- */
+  #mainCountdown{ margin-top:30px; display:flex; flex-direction:column; align-items:center; }
+  .cd-bubble{
+    position:relative; display:inline-block;
+    background:var(--ink); color:var(--yellow);
+    font-family:var(--font-pop); font-size:15px;
+    padding:10px 24px; border-radius:999px; margin-bottom:18px;
+  }
+  .cd-bubble::after{
+    content:""; position:absolute; left:50%; bottom:-9px; transform:translateX(-50%);
+    border-width:10px 8px 0 8px; border-style:solid;
+    border-color:var(--ink) transparent transparent transparent;
+  }
+  .flipclock{
+    display:inline-flex; gap:clamp(10px,3vw,20px);
+    background:
+      radial-gradient(circle at 1px 1px, rgba(255,255,255,.06) 1px, transparent 0) 0 0/6px 6px,
+      var(--ink);
+    border-radius:18px; padding:18px 16px 14px;
+  }
+  .fc-group{ display:flex; flex-direction:column; align-items:center; gap:8px; }
+  .fc-digits{ display:flex; gap:3px; }
+  .fc-tile{ position:relative; width:clamp(24px,6vw,44px); height:clamp(34px,8.6vw,62px); perspective:220px; }
+  .fc-tile .flip-inner{ position:absolute; inset:0; transform-style:preserve-3d; transition:transform .5s cubic-bezier(.45,0,.2,1); }
+  .fc-tile.flip .flip-inner{ transform:rotateX(-180deg); }
+  .fc-tile .face{
+    position:absolute; inset:0;
+    background:linear-gradient(#3c3220,#1f1809); color:#fff;
+    font-family:var(--font-num); font-weight:700; font-size:clamp(18px,5vw,36px);
+    display:flex; align-items:center; justify-content:center;
+    border-radius:5px; backface-visibility:hidden; font-variant-numeric:tabular-nums;
+  }
+  .fc-tile .face::after{ content:""; position:absolute; left:0; right:0; top:50%; height:1px; background:rgba(0,0,0,.6); }
+  .fc-tile .face.back{ transform:rotateX(180deg); }
+  .fc-label{ font-family:var(--font-body); font-size:12px; letter-spacing:.04em; color:var(--yellow); font-weight:700; }
+
+  /* ============ 共通パーツ ============ */
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:var(--font-num); font-size:12.5px; letter-spacing:.14em;
+    text-transform:uppercase; font-weight:600; color:var(--ink);
+  }
+  .eyebrow::before{ content:""; width:9px; height:9px; border-radius:50%; background:var(--red); }
+  .eyebrow.c-blue::before{ background:var(--blue); }
+  .eyebrow.c-green::before{ background:var(--green); }
+  .eyebrow.c-orange::before{ background:var(--orange); }
+
+  .reveal{ opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease; }
+  .reveal.in{ opacity:1; transform:none; }
+
+  .card-pop{
+    background:#fff; color:var(--ink);
+    border:4px solid var(--ink); border-radius:20px;
+    box-shadow:7px 7px 0 var(--ink);
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .card-pop:hover{ transform:translate(-3px,-3px); box-shadow:10px 10px 0 var(--ink); }
+
+  .section{ padding:60px 0; }
+  .sec-head{ text-align:center; margin-bottom:36px; }
+  .sec-head h2{
+    font-family:var(--font-pop); font-size:clamp(27px,6.4vw,40px);
+    line-height:1.4; margin-top:12px; color:var(--ink);
+  }
+  .sec-head .sub{
+    margin:12px auto 0; max-width:32em;
+    font-weight:700; font-size:15px; color:var(--ink); opacity:.78;
+  }
+
+  /* ============ греeting bubble ============ */
+  .greeting{ background:var(--yellow); padding:48px 0 8px; text-align:center; }
+  .bubble{
+    position:relative; display:inline-block; text-align:left;
+    background:#fff; border:4px solid var(--ink); border-radius:22px;
+    padding:24px 26px; max-width:540px;
+    box-shadow:7px 7px 0 var(--ink);
+  }
+  .bubble::before{
+    content:""; position:absolute; left:44px; top:-19px;
+    border-left:14px solid transparent; border-right:14px solid transparent; border-bottom:19px solid var(--ink);
+  }
+  .bubble::after{
+    content:""; position:absolute; left:48px; top:-13px;
+    border-left:10px solid transparent; border-right:10px solid transparent; border-bottom:14px solid #fff;
+  }
+  .bubble .lead{ margin:0 0 10px; font-family:var(--font-pop); font-size:19px; color:var(--red-deep); }
+  .bubble p{ margin:0 0 10px; font-size:16px; font-weight:700; line-height:1.85; }
+  .bubble p:last-child{ margin-bottom:0; }
+
+  /* ============ 名入れ（主役） ============ */
+  .naire{ background:var(--blue); color:#fff; padding:4px 0 0; }
+  .naire .section{ padding:56px 0 8px; }
+  .naire .sec-head h2{ color:#fff; }
+  .naire .sec-head .sub{ color:#fff; opacity:.9; }
+  .naire .eyebrow{ color:#fff; }
+  .naire .eyebrow::before{ background:var(--yellow); }
+  .naire .intro{
+    max-width:30em; margin:0 auto 8px; text-align:center;
+    font-size:16px; font-weight:700; line-height:1.9; color:rgba(255,255,255,.92);
+  }
+
+  /* 名入れクーポン10%OFF スポットライト */
+  .engrave{
+    background:var(--ink); color:#fff; text-align:center;
+    padding:52px 0; margin:44px 0 0;
+    border-top:5px solid var(--yellow); border-bottom:5px solid var(--yellow);
+  }
+  .engrave .tag{ font-family:var(--font-num); font-size:12.5px; letter-spacing:.2em; font-weight:600; opacity:.85; }
+  .engrave .pct{ font-family:var(--font-pop); font-size:clamp(58px,15vw,104px); color:var(--yellow); line-height:1; margin-top:10px; }
+  .engrave .pct small{ font-size:.42em; margin-left:.1em; }
+  .engrave .name{ margin-top:12px; font-family:var(--font-pop); font-size:19px; }
+  .engrave .desc{ margin:10px auto 0; max-width:30em; font-size:14px; font-weight:700; opacity:.9; }
+  .engrave .note{ margin-top:16px; font-size:12px; opacity:.6; }
+
+  /* 名入れ商品グループ */
+  .naire-groups{ background:var(--blue); padding:14px 0 56px; }
+  .ngroup{ margin-top:40px; }
+  .ngroup:first-child{ margin-top:8px; }
+  .ngroup-head{
+    display:flex; align-items:baseline; gap:12px; flex-wrap:wrap;
+    padding-bottom:12px; margin-bottom:20px;
+    border-bottom:3px solid rgba(255,255,255,.28);
+  }
+  .ngroup-head h3{ font-family:var(--font-pop); font-size:clamp(19px,4.6vw,25px); color:#fff; }
+  .ngroup-head .en{ font-family:var(--font-num); font-size:12px; letter-spacing:.14em; color:var(--yellow); font-weight:600; }
+
+  .pgrid{ display:grid; grid-template-columns:repeat(4,1fr); gap:18px; }
+  @media (max-width:820px){ .pgrid{ grid-template-columns:repeat(3,1fr); } }
+  @media (max-width:600px){ .pgrid{ grid-template-columns:repeat(2,1fr); gap:13px; } }
+  .pcard{ display:flex; flex-direction:column; background:#fff; border:3px solid var(--ink); border-radius:14px; overflow:hidden; }
+  .pcard img{ width:100%; aspect-ratio:1/1; object-fit:cover; border-bottom:3px solid var(--ink); background:var(--paper-2); }
+  .pcard .pbody{ padding:11px 12px 13px; display:flex; flex-direction:column; gap:6px; flex:1; }
+  .pcard .pname{ font-size:12.5px; font-weight:700; line-height:1.5; color:var(--ink); }
+  .pcard .pmeta{ margin-top:auto; display:flex; align-items:baseline; justify-content:space-between; gap:6px; }
+  .pcard .pprice{ font-family:var(--font-num); font-weight:700; font-size:15.5px; color:var(--red); }
+  .pcard .pprice small{ font-size:.62em; margin-left:1px; font-weight:600; color:var(--ink); opacity:.7; }
+  .pcard .prev{ font-size:10.5px; font-weight:700; color:var(--ink); opacity:.65; white-space:nowrap; }
+  .pcard .prev.none{ visibility:hidden; }
+
+  .naire-all{ text-align:center; margin-top:44px; }
+  .btn-big{
+    display:inline-block; font-family:var(--font-pop); font-size:17px;
+    padding:18px 40px; border-radius:999px;
+    background:var(--yellow); color:var(--ink);
+    border:4px solid var(--ink); box-shadow:6px 6px 0 rgba(0,0,0,.35);
+  }
+  .btn-big:active{ transform:translateY(4px); box-shadow:3px 3px 0 rgba(0,0,0,.35); }
+
+  /* ============ ポイント2倍デー ============ */
+  .pt-grid{ display:grid; grid-template-columns:1fr 1fr; gap:22px; }
+  @media (max-width:720px){ .pt-grid{ grid-template-columns:1fr; } }
+  .pt-card{ padding:26px 24px; border-radius:22px; }
+  .pt-card.d1{ border-top:14px solid var(--red); }
+  .pt-card.d2{ border-top:14px solid var(--blue); }
+  .pt-day{ font-family:var(--font-num); font-size:12px; letter-spacing:.14em; font-weight:600; opacity:.7; }
+  .pt-date{ font-family:var(--font-num); font-size:clamp(28px,6vw,34px); font-weight:700; margin-top:6px; }
+  .pt-time{ font-size:14.5px; font-weight:700; margin-top:2px; }
+  .pt-x2{ display:inline-block; margin-top:12px; font-family:var(--font-pop); font-size:40px; }
+  .pt-card.d1 .pt-x2{ color:var(--red); }
+  .pt-card.d2 .pt-x2{ color:var(--blue); }
+  .pt-foot{ margin-top:22px; text-align:center; font-size:13px; font-weight:700; opacity:.75; }
+
+  /* ============ 全品クーポン（チケット） ============ */
+  .ticket-row{ display:grid; grid-template-columns:1fr 1fr; gap:26px; }
+  @media (max-width:720px){ .ticket-row{ grid-template-columns:1fr; } }
+  .ticket{
+    position:relative; background:#fff; border:4px solid var(--ink); border-radius:18px;
+    padding:28px 26px; box-shadow:7px 7px 0 var(--ink);
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .ticket:hover{ transform:translate(-3px,-3px) rotate(-1deg); box-shadow:10px 10px 0 var(--ink); }
+  .ticket::before, .ticket::after{
+    content:""; position:absolute; top:50%; transform:translateY(-50%);
+    width:26px; height:26px; background:var(--yellow); border:4px solid var(--ink); border-radius:50%;
+  }
+  .ticket::before{ left:-17px; }
+  .ticket::after{ right:-17px; }
+  .ticket .cond{ font-size:13px; font-weight:700; opacity:.75; }
+  .ticket .amount{ font-family:var(--font-num); font-weight:700; font-size:clamp(42px,10vw,56px); color:var(--red); line-height:1; margin-top:8px; }
+  .ticket .amount span{ font-size:.36em; margin-left:6px; font-weight:600; }
+  .ticket .tname{ margin-top:12px; font-family:var(--font-pop); font-size:15px; }
+  .ticket .tdesc{ margin-top:6px; font-size:12.5px; font-weight:700; opacity:.72; }
+  .ticket .tget{
+    display:inline-block; margin-top:14px; font-family:var(--font-pop); font-size:13px;
+    padding:9px 20px; border-radius:999px; background:var(--ink); color:var(--yellow);
+  }
+
+  /* ============ 対象ショップ限定クーポン（フラッグ） ============ */
+  .bunting{ background:var(--yellow); padding:34px 0; border-top:4px dashed var(--ink); border-bottom:4px dashed var(--ink); }
+  .flags{ display:flex; gap:16px; overflow-x:auto; padding:8px 4px; scroll-snap-type:x proximity; }
+  .flag-slot{
+    flex:0 0 auto; width:190px; aspect-ratio:4/3; scroll-snap-align:start;
+    background:
+      repeating-linear-gradient(135deg, rgba(26,18,6,.1) 0 2px, transparent 2px 15px),
+      #fff;
+    border:3px dashed var(--ink); border-radius:14px;
+    display:flex; align-items:center; justify-content:center;
+    font-size:12px; font-weight:700; color:var(--ink); text-align:center; padding:10px;
+  }
+  .flag-slot img{ width:100%; height:100%; object-fit:cover; border-radius:11px; }
+
+  /* ============ おすすめ（通常のお酒） ============ */
+  .rec-lead{ text-align:center; max-width:34em; margin:0 auto 30px; font-weight:700; font-size:15px; opacity:.8; }
+  .rec-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
+  @media (max-width:900px){ .rec-grid{ grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:480px){ .rec-grid{ gap:14px; } }
+  .rec-card{ padding:14px; border-radius:16px; }
+  .rec-photo{
+    aspect-ratio:1/1; border:3px solid var(--ink); border-radius:12px;
+    background:
+      repeating-linear-gradient(135deg, rgba(26,18,6,.1) 0 2px, transparent 2px 15px),
+      var(--paper-2);
+    display:flex; align-items:center; justify-content:center;
+    font-size:11px; font-weight:700; letter-spacing:.06em; color:var(--ink);
+    overflow:hidden;
+  }
+  .rec-photo img{ width:100%; height:100%; object-fit:cover; }
+  .rec-name{ margin-top:10px; font-size:13px; font-weight:700; line-height:1.5; }
+  .rec-price{ margin-top:4px; font-family:var(--font-num); font-size:16px; font-weight:700; color:var(--red); }
+  .rec-note{ margin-top:4px; display:inline-block; font-size:10.5px; font-weight:700; color:#fff; padding:2px 9px; border-radius:999px; background:var(--blue); }
+  .rec-card:nth-child(4n+1) .rec-note{ background:var(--red); }
+  .rec-card:nth-child(4n+2) .rec-note{ background:var(--green); }
+  .rec-card:nth-child(4n+3) .rec-note{ background:var(--blue); }
+  .rec-card:nth-child(4n+4) .rec-note{ background:var(--orange); }
+
+  /* ============ CLOSING / FOOTER ============ */
+  .closing{ background:var(--ink); color:var(--yellow); text-align:center; padding:56px 0 30px; }
+  .closing h2{ font-family:var(--font-pop); font-size:clamp(26px,6vw,36px); line-height:1.45; }
+  .closing p{ margin:16px auto 26px; max-width:26em; font-size:15px; font-weight:700; color:#f4e7b0; }
+  .closing .btn-big{ box-shadow:6px 6px 0 rgba(0,0,0,.45); }
+  .closing footer{ margin-top:44px; padding-top:20px; border-top:1px solid rgba(255,229,0,.2); font-size:12px; color:#c9b98e; font-weight:700; }
+  .devnote{ margin:18px auto 0; max-width:40em; padding:12px 14px; border:2px dashed var(--yellow); border-radius:10px; font-size:11.5px; font-weight:700; }
+
+  @media (max-width:600px){
+    .section{ padding:44px 0; }
+    .engrave{ padding:40px 0; }
+    .card-pop:hover{ transform:none; box-shadow:7px 7px 0 var(--ink); }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="row">
+    <a class="shop-link" href="https://www.rakuten.co.jp/d-craft/" target="_blank" rel="noopener">ドリームクラフト＆ビッグボス　ショップTOPへ</a>
+    <button class="burger" id="navToggle" aria-expanded="false" aria-controls="navPanel" aria-label="メニューを開く">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+<nav class="nav-panel" id="navPanel">
+  <ul>
+    <li><a href="#naire">名入れのお酒</a></li>
+    <li><a href="#point-up">ポイント2倍デー</a></li>
+    <li><a href="#storewide">店内全品クーポン</a></li>
+    <li><a href="#coupons">対象ショップ限定クーポン</a></li>
+    <li><a href="#recommend">おすすめのお酒</a></li>
+    <li><a href="https://www.rakuten.co.jp/d-craft/" target="_blank" rel="noopener">ショップTOPへ</a></li>
+  </ul>
+</nav>
+
+<div class="page">
+
+  <!-- ============ FV ============ -->
+  <section class="fv">
+    <div class="confetti" aria-hidden="true">
+      <span style="left:4%;animation-duration:3.6s;animation-delay:-1.2s;"></span>
+      <span style="left:11%;animation-duration:4.3s;animation-delay:-0.4s;"></span>
+      <span style="left:18%;animation-duration:3.2s;animation-delay:-2.6s;"></span>
+      <span style="left:26%;animation-duration:4.8s;animation-delay:-1.8s;"></span>
+      <span style="left:34%;animation-duration:3.9s;animation-delay:-3.1s;"></span>
+      <span style="left:42%;animation-duration:3.4s;animation-delay:-0.9s;"></span>
+      <span style="left:50%;animation-duration:4.6s;animation-delay:-2.2s;"></span>
+      <span style="left:58%;animation-duration:3.7s;animation-delay:-1.5s;"></span>
+      <span style="left:66%;animation-duration:4.1s;animation-delay:-3.4s;"></span>
+      <span style="left:73%;animation-duration:3.3s;animation-delay:-0.6s;"></span>
+      <span style="left:81%;animation-duration:4.7s;animation-delay:-2.9s;"></span>
+      <span style="left:88%;animation-duration:3.8s;animation-delay:-1.1s;"></span>
+      <span style="left:7%;animation-duration:4.9s;animation-delay:-3.7s;"></span>
+      <span style="left:23%;animation-duration:3.5s;animation-delay:-2.0s;"></span>
+      <span style="left:47%;animation-duration:4.4s;animation-delay:-0.2s;"></span>
+      <span style="left:63%;animation-duration:3.9s;animation-delay:-2.5s;"></span>
+      <span style="left:78%;animation-duration:4.2s;animation-delay:-1.6s;"></span>
+      <span style="left:93%;animation-duration:3.6s;animation-delay:-3.0s;"></span>
+    </div>
+
+    <div class="fv-media" id="fvMedia">
+      <!-- ▼差し替え：FV看板。SP・PC兼用のポスター画像 -->
+      <img class="fv-hero" src="images/fv.webp"
+           alt="楽天スーパーSALE　9月4日(金)20:00〜9月11日(金)1:59　ドリームクラフト＆ビッグボス　ウイスキーに名入れできるの知ってた？">
+    </div>
+
+    <div class="wrap">
+      <div id="mainCountdown">
+        <div class="cd-bubble" id="mainState">楽天スーパーSALE開始まであと</div>
+        <div class="flipclock" id="flipclock" aria-label="カウントダウン">
+          <div class="fc-group">
+            <div class="fc-digits">
+              <div class="fc-tile" data-tile="d0"><div class="flip-inner"><div class="face front">0</div><div class="face back">0</div></div></div>
+              <div class="fc-tile" data-tile="d1"><div class="flip-inner"><div class="face front">0</div><div class="face back">0</div></div></div>
+            </div>
+            <div class="fc-label">日</div>
+          </div>
+          <div class="fc-group">
+            <div class="fc-digits">
+              <div class="fc-tile" data-tile="h0"><div class="flip-inner"><div class="face front">0</div><div class="face back">0</div></div></div>
+              <div class="fc-tile" data-tile="h1"><div class="flip-inner"><div class="face front">0</div><div class="face back">0</div></div></div>
+            </div>
+            <div class="fc-label">時間</div>
+          </div>
+          <div class="fc-group">
+            <div class="fc-digits">
+              <div class="fc-tile" data-tile="m0"><div class="flip-inner"><div class="face front">0</div><div class="face back">0</div></div></div>
+              <div class="fc-tile" data-tile="m1"><div class="flip-inner"><div class="face front">0</div><div class="face back">0</div></div></div>
+            </div>
+            <div class="fc-label">分</div>
+          </div>
+          <div class="fc-group">
+            <div class="fc-digits">
+              <div class="fc-tile" data-tile="s0"><div class="flip-inner"><div class="face front">0</div><div class="face back">0</div></div></div>
+              <div class="fc-tile" data-tile="s1"><div class="flip-inner"><div class="face front">0</div><div class="face back">0</div></div></div>
+            </div>
+            <div class="fc-label">秒</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PCのみ：横並びジャンプナビ -->
+  <nav class="section-nav">
+    <a href="#naire">名入れのお酒</a>
+    <a href="#point-up">ポイント2倍</a>
+    <a href="#storewide">全品クーポン</a>
+    <a href="#coupons">対象クーポン</a>
+    <a href="#recommend">おすすめ</a>
+  </nav>
+
+  <!-- ============ ごあいさつ ============ -->
+  <section class="greeting">
+    <div class="wrap">
+      <div class="bubble">
+        <p class="lead">ウイスキーに名入れできるの、知ってた？</p>
+        <p>年に4回しかない楽天スーパーSALE。ドリームクラフト＆ビッグボスの得意技は、お酒のラベルやボトルに名前や写真を入れる「名入れ」です。</p>
+        <p>誕生日、還暦、退職、開店祝い。渡す相手の名前が入った一本は、それだけで特別になります。SALEのあいだは名入れ商品がクーポンでさらにお得。ぜひのぞいていってください。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 名入れのお酒（主役） ============ -->
+  <div class="naire" id="naire">
+    <section class="section">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <span class="eyebrow">NAME-ENGRAVED SAKE</span>
+          <h2>お酒に、名前を。</h2>
+          <p class="sub">写真・名前・メッセージを、本物みたいなラベルや彫刻ボトルに。世界にひとつのギフトになります。</p>
+        </div>
+        <p class="intro">迷ったら、まずは指名手配（WANTED）ラベルか、表彰状ラベルが人気です。名入れ加工商品はSALE期間中ずっと、下記クーポンで10%OFF。</p>
+      </div>
+
+      <!-- 名入れ商品クーポン 10%OFF -->
+      <div class="engrave">
+        <div class="wrap">
+          <div class="tag">NAME ENGRAVING COUPON</div>
+          <div class="pct">10<small>% OFF</small></div>
+          <div class="name">名入れ商品クーポン</div>
+          <p class="desc">名入れ加工商品全般が対象。楽天スーパーSALE期間中（9/4 20:00〜9/11 1:59）はいつでもご利用いただけます。</p>
+          <!-- ▼差し替え：クーポン取得URL（未定の間は # のまま） -->
+          <a class="tget" data-coupon href="#" style="margin-top:18px;font-size:14px;">クーポンを受け取る</a>
+          <p class="note">※先着・枚数限定。会計画面でクーポンを選択のうえご購入ください。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 名入れ商品グループ -->
+    <div class="naire-groups">
+      <div class="wrap">
+
+        <div class="ngroup reveal">
+          <div class="ngroup-head">
+            <h3>WANTED／指名手配ラベル</h3>
+            <span class="en">好きな写真で作れる</span>
+          </div>
+          <div class="pgrid">
+            <a class="pcard" href="https://item.rakuten.co.jp/d-craft/82184045954-won/" target="_blank" rel="noopener">
+              <img src="https://tshop.r10s.jp/d-craft/cabinet/c47/82184045954-won.jpg?_ex=400x400" alt="名入れ ジャックダニエル WANTED 指名手配ラベル" loading="lazy">
+              <div class="pbody"><div class="pname">ジャックダニエル 700ml WANTED 指名手配ラベル</div>
+                <div class="pmeta"><span class="pprice">6,050<small>円</small></span><span class="prev">★5.0(7)</span></div></div>
+            </a>
+            <a class="pcard" href="https://item.rakuten.co.jp/d-craft/4901411052809wlb/" target="_blank" rel="noopener">
+              <img src="https://tshop.r10s.jp/d-craft/cabinet/c44/4901411052809wlb.jpg?_ex=400x400" alt="名入れ ホワイトホース WANTED 指名手配ラベル" loading="lazy">
+              <div class="pbody"><div class="pname">ホワイトホース ファインオールド 700ml WANTED</div>
+                <div class="pmeta"><span class="pprice">5,170<small>円</small></span><span class="prev">★5.0(6)</span></div></div>
+            </a>
+            <a class="pcard" href="https://item.rakuten.co.jp/d-craft/4901411070766wlb/" target="_blank" rel="noopener">
+              <img src="https://tshop.r10s.jp/d-craft/cabinet/c14/4901411070766wlb_1.jpg?_ex=400x400" alt="名入れ フォアローゼズ WANTED 指名手配ラベル" loading="lazy">
+              <div class="pbody"><div class="pname">フォアローゼズ 700ml WANTED 指名手配ラベル</div>
+                <div class="pmeta"><span class="pprice">5,170<small>円</small></span><span class="prev">★5.0(2)</span></div></div>
+            </a>
+            <a class="pcard" href="https://item.rakuten.co.jp/d-craft/85246500576wan/" target="_blank" rel="noopener">
+              <img src="https://tshop.r10s.jp/d-craft/cabinet/c47/85246500576wan.jpg?_ex=400x400" alt="名入れ メーカーズマーク WANTED 指名手配ラベル" loading="lazy">
+              <div class="pbody"><div class="pname">メーカーズマーク 700ml WANTED 指名手配ラベル</div>
+                <div class="pmeta"><span class="pprice">5,610<small>円</small></span><span class="prev none">-</span></div></div>
+            </a>
+            <a class="pcard" href="https://item.rakuten.co.jp/d-craft/5060045581365wlb/" target="_blank" rel="noopener">
+              <img src="https://tshop.r10s.jp/d-craft/cabinet/c14/5060045581365wlb_1.jpg?_ex=400x400" alt="名入れ オールドクロウ WANTED 指名手配ラベル" loading="lazy">
+              <div class="pbody"><div class="pname">オールドクロウ 700ml WANTED 指名手配ラベル</div>
+                <div class="pmeta"><span class="pprice">5,680<small>円</small></span><span class="prev none">-</span></div></div>
+            </a>
+            <a class="pcard" href="https://item.rakuten.co.jp/d-craft/4972776941879wlbjk/" target="_blank" rel="noopener">
+              <img src="https://tshop.r10s.jp/d-craft/cabinet/c53/4972776941879wlbjk.jpg?_ex=400x400" alt="名入れ 黒霧島 WANTED 指名手配ラベル おつまみセット" loading="lazy">
+              <div class="pbody"><div class="pname">黒霧島 900ml WANTED＋選べるおつまみ2種</div>
+                <div class="pmeta"><span class="pprice">6,050<small>円</small></span><span class="prev none">-</span></div></div>
+            </a>
+            <a class="pcard" href="https://item.rakuten.co.jp/d-craft/4901777279421wlb/" target="_blank" rel="noopener">
+              <img src="https://tshop.r10s.jp/d-craft/cabinet/c53/4901777279421wlb.jpg?_ex=400x400" alt="名入れ サントリー知多 WANTED 指名手配ラベル" loading="lazy">
+              <div class="pbody"><div class="pname">サントリー 知多 700ml WANTED 指名手配ラベル</div>
+                <div class="pmeta"><span class="pprice">14,080<small>円</small></span><span class="prev none">-</span></div></div>
+            </a>
+          </div>
+        </div>
+
+        <div class="ngroup reveal">
+          <div class="ngroup-head">
+            <h3>本物そっくり名入れラベル</h3>
+            <span class="en">見た瞬間ふきだす</span>
+          </div>
+          <div class="pgrid">
+            <a class="pcard" href="https://item.rakuten.co.jp/d-craft/4901777284289lbn/" target="_blank" rel="noopener">
+              <img src="https://tshop.r10s.jp/d-craft/cabinet/c1/4901777284289lbn_c0.jpg?_ex=400x400" alt="名入れ サントリー角瓶 本物そっくり名入れラベル" loading="lazy">
+              <div class="pbody"><div class="pname">サントリー 角瓶 700ml 本物そっくり名入れラベル</div>
+                <div class="pmeta"><span class="pprice">5,060<small>円</small></span><span class="prev">★4.9(8)</span></div></div>
+            </a>
+            <a class="pcard" href="https://item.rakuten.co.jp/d-craft/4972776941879lb2/" target="_blank" rel="noopener">
+              <img src="https://tshop.r10s.jp/d-craft/cabinet/c14/4972776941879lb2.jpg?_ex=400x400" alt="名入れ 黒霧島 本物そっくり名入れラベル" loading="lazy">
+              <div class="pbody"><div class="pname">黒霧島 900ml 本物そっくり名入れラベル</div>
+                <div class="pmeta"><span class="pprice">4,950<small>円</small></span><span class="prev">★5.0(2)</span></div></div>
+            </a>
+            <a class="pcard" href="https://item.rakuten.co.jp/d-craft/82184045954lb1/" target="_blank" rel="noopener">
+              <img src="https://tshop.r10s.jp/d-craft/cabinet/c46/82184045954lb1.jpg?_ex=400x400" alt="名入れ ジャックダニエル 本物そっくり写真入り名入れラベル" loading="lazy">
+              <div class="pbody"><div class="pname">ジャックダニエル 700ml 写真入り名入れラベル</div>
+                <div class="pmeta"><span class="pprice">6,050<small>円</small></span><span class="prev">★5.0(1)</span></div></div>
+            </a>
+            <a class="pcard" href="https://item.rakuten.co.jp/d-craft/5000267024233lbgs/" target="_blank" rel="noopener">
+              <img src="https://tshop.r10s.jp/d-craft/cabinet/c53/5000267024233lbgs.jpg?_ex=400x400" alt="名入れ ジョニーウォーカー ブラック 本物そっくりラベル グラスセット" loading="lazy">
+              <div class="pbody"><div class="pname">ジョニーウォーカー ブラック 700ml＋グラス・丸氷カップ</div>
+                <div class="pmeta"><span class="pprice">8,030<small>円</small></span><span class="prev none">-</span></div></div>
+            </a>
+          </div>
+        </div>
+
+        <div class="ngroup reveal">
+          <div class="ngroup-head">
+            <h3>表彰状・感謝状ラベル</h3>
+            <span class="en">お祝い・記念日に</span>
+          </div>
+          <div class="pgrid">
+            <a class="pcard" href="https://item.rakuten.co.jp/d-craft/4901411100043lbl-k/" target="_blank" rel="noopener">
+              <img src="https://tshop.r10s.jp/d-craft/cabinet/c14/100043lbl-k01.jpg?_ex=400x400" alt="名入れ キリン陸 表彰状ラベル" loading="lazy">
+              <div class="pbody"><div class="pname">キリン 陸 500ml 表彰状ラベル</div>
+                <div class="pmeta"><span class="pprice">4,620<small>円</small></span><span class="prev none">-</span></div></div>
+            </a>
+            <a class="pcard" href="https://item.rakuten.co.jp/d-craft/4972776141859lbl-k/" target="_blank" rel="noopener">
+              <img src="https://tshop.r10s.jp/d-craft/cabinet/c14/4972776141859lbl-k.jpg?_ex=400x400" alt="名入れ 赤霧島 表彰状ラベル" loading="lazy">
+              <div class="pbody"><div class="pname">赤霧島 900ml 表彰状ラベル</div>
+                <div class="pmeta"><span class="pprice">4,950<small>円</small></span><span class="prev">★5.0(1)</span></div></div>
+            </a>
+            <a class="pcard" href="https://item.rakuten.co.jp/d-craft/4972776140036lbl-k/" target="_blank" rel="noopener">
+              <img src="https://tshop.r10s.jp/d-craft/cabinet/c14/4972776140036lbl-k.jpg?_ex=400x400" alt="名入れ 白霧島 表彰状ラベル" loading="lazy">
+              <div class="pbody"><div class="pname">白霧島 900ml 表彰状ラベル</div>
+                <div class="pmeta"><span class="pprice">4,950<small>円</small></span><span class="prev none">-</span></div></div>
+            </a>
+            <a class="pcard" href="https://item.rakuten.co.jp/d-craft/4901411070766lbl-k/" target="_blank" rel="noopener">
+              <img src="https://tshop.r10s.jp/d-craft/cabinet/c14/4901411070766lbl-k_1.jpg?_ex=400x400" alt="名入れ フォアローゼズ 表彰状ラベル" loading="lazy">
+              <div class="pbody"><div class="pname">フォアローゼズ 700ml 表彰状ラベル</div>
+                <div class="pmeta"><span class="pprice">5,170<small>円</small></span><span class="prev none">-</span></div></div>
+            </a>
+            <a class="pcard" href="https://item.rakuten.co.jp/d-craft/5060045581365lbl-k/" target="_blank" rel="noopener">
+              <img src="https://tshop.r10s.jp/d-craft/cabinet/c14/oldcrow_kansya1.jpg?_ex=400x400" alt="名入れ オールドクロウ 表彰状・感謝状ラベル" loading="lazy">
+              <div class="pbody"><div class="pname">オールドクロウ 700ml 表彰状・感謝状ラベル</div>
+                <div class="pmeta"><span class="pprice">5,115<small>円</small></span><span class="prev none">-</span></div></div>
+            </a>
+            <a class="pcard" href="https://item.rakuten.co.jp/d-craft/4901411052809lbl-k/" target="_blank" rel="noopener">
+              <img src="https://tshop.r10s.jp/d-craft/cabinet/c14/whitehorse_1.jpg?_ex=400x400" alt="名入れ ホワイトホース 表彰状ラベル" loading="lazy">
+              <div class="pbody"><div class="pname">ホワイトホース 700ml 表彰状ラベル</div>
+                <div class="pmeta"><span class="pprice">5,170<small>円</small></span><span class="prev none">-</span></div></div>
+            </a>
+          </div>
+        </div>
+
+        <div class="ngroup reveal">
+          <div class="ngroup-head">
+            <h3>彫刻ボトル・千社札・だるま</h3>
+            <span class="en">和のデザインで直接ボトルへ</span>
+          </div>
+          <div class="pgrid">
+            <a class="pcard" href="https://item.rakuten.co.jp/d-craft/4901777188112-daruma/" target="_blank" rel="noopener">
+              <img src="https://tshop.r10s.jp/d-craft/cabinet/c1/4901777188112-da.jpg?_ex=400x400" alt="名入れ サントリーオールド だるまデザイン彫刻ボトル" loading="lazy">
+              <div class="pbody"><div class="pname">サントリー オールド だるまデザイン彫刻ボトル</div>
+                <div class="pmeta"><span class="pprice">6,930<small>円</small></span><span class="prev">★5.0(7)</span></div></div>
+            </a>
+            <a class="pcard" href="https://item.rakuten.co.jp/d-craft/4972776941879-b/" target="_blank" rel="noopener">
+              <img src="https://tshop.r10s.jp/d-craft/cabinet/c14/4972776941879-b_c0.jpg?_ex=400x400" alt="名入れ 黒霧島 千社札 名入れ彫刻ボトル" loading="lazy">
+              <div class="pbody"><div class="pname">黒霧島 900ml オリジナル千社札 名入れ彫刻ボトル</div>
+                <div class="pmeta"><span class="pprice">6,380<small>円</small></span><span class="prev none">-</span></div></div>
+            </a>
+            <a class="pcard" href="https://item.rakuten.co.jp/d-craft/4901777188112lbd/" target="_blank" rel="noopener">
+              <img src="https://tshop.r10s.jp/d-craft/cabinet/c1/188112lbd-01.jpg?_ex=400x400" alt="名入れ サントリーオールド 色だるまラベル 全8色" loading="lazy">
+              <div class="pbody"><div class="pname">サントリー オールド 名入れ色だるまラベル 全8色</div>
+                <div class="pmeta"><span class="pprice">5,170<small>円</small></span><span class="prev">★5.0(3)</span></div></div>
+            </a>
+            <a class="pcard" href="https://item.rakuten.co.jp/d-craft/4901777284289-b/" target="_blank" rel="noopener">
+              <img src="https://tshop.r10s.jp/d-craft/cabinet/c1/284289-b01.jpg?_ex=400x400" alt="名入れ サントリー角瓶 和風 亀甲デザイン 名入れボトル" loading="lazy">
+              <div class="pbody"><div class="pname">サントリー 角瓶 700ml 和風・亀甲デザイン 名入れボトル</div>
+                <div class="pmeta"><span class="pprice">6,050<small>円</small></span><span class="prev">★4.3(12)</span></div></div>
+            </a>
+            <a class="pcard" href="https://item.rakuten.co.jp/d-craft/4972776140036-b/" target="_blank" rel="noopener">
+              <img src="https://tshop.r10s.jp/d-craft/cabinet/c14/4972776140036-b.jpg?_ex=400x400" alt="名入れ 白霧島 オリジナル千社札 デザイン名入れボトル" loading="lazy">
+              <div class="pbody"><div class="pname">白霧島 900ml オリジナル千社札 デザイン名入れボトル</div>
+                <div class="pmeta"><span class="pprice">6,380<small>円</small></span><span class="prev none">-</span></div></div>
+            </a>
+            <a class="pcard" href="https://item.rakuten.co.jp/d-craft/50507733star/" target="_blank" rel="noopener">
+              <img src="https://tshop.r10s.jp/d-craft/cabinet/c14/50507733star.jpg?_ex=400x400" alt="名入れ ボンベイサファイア 星座で作る 名入れボトル" loading="lazy">
+              <div class="pbody"><div class="pname">ボンベイ・サファイア 200ml 星座で作る名入れボトル</div>
+                <div class="pmeta"><span class="pprice">4,180<small>円</small></span><span class="prev none">-</span></div></div>
+            </a>
+          </div>
+        </div>
+
+        <div class="ngroup reveal">
+          <div class="ngroup-head">
+            <h3>日本酒・変わり種</h3>
+            <span class="en">枡付き・看板キーホルダー</span>
+          </div>
+          <div class="pgrid">
+            <a class="pcard" href="https://item.rakuten.co.jp/d-craft/49312133p1/" target="_blank" rel="noopener">
+              <img src="https://tshop.r10s.jp/d-craft/cabinet/c14/49312133p1.jpg?_ex=400x400" alt="名入れ 日本酒 賀茂鶴 大吟醸金箔入り 鳥獣戯画 名入れ枡付き" loading="lazy">
+              <div class="pbody"><div class="pname">賀茂鶴 大吟醸 金箔入り 180ml ＋鳥獣戯画 名入れ枡</div>
+                <div class="pmeta"><span class="pprice">4,620<small>円</small></span><span class="prev none">-</span></div></div>
+            </a>
+            <a class="pcard" href="https://item.rakuten.co.jp/d-craft/2190010001208/" target="_blank" rel="noopener">
+              <img src="https://tshop.r10s.jp/d-craft/cabinet/c44/2190010001208n.jpg?_ex=400x400" alt="ひとり居酒屋 名入れ看板キーホルダー 好きなお酒が選べるギフトセット" loading="lazy">
+              <div class="pbody"><div class="pname">ひとり居酒屋！名入れ看板キーホルダー＋選べるお酒セット</div>
+                <div class="pmeta"><span class="pprice">3,300<small>円〜</small></span><span class="prev none">-</span></div></div>
+            </a>
+          </div>
+        </div>
+
+        <div class="naire-all">
+          <a class="btn-big" href="https://search.rakuten.co.jp/search/mall/%E5%90%8D%E5%85%A5%E3%82%8C%E3%80%80%E9%85%92/?sf=1&sid=296346" target="_blank" rel="noopener">名入れのお酒をすべて見る（107件）</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ ポイント2倍デー ============ -->
+  <section class="section" id="point-up">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow c-blue">POINT UP DAYS</span>
+        <h2>店内全品、ポイント2倍デー！</h2>
+        <p class="sub">2日限定・各日20:00〜23:59の4時間だけ。この時間にまとめて贈り物を選ぶのがお得です。</p>
+      </div>
+      <div class="pt-grid reveal">
+        <div class="pt-card d1 card-pop">
+          <div class="pt-day">DAY 1 — 9月4日（金）</div>
+          <div class="pt-date">09 / 04</div>
+          <div class="pt-time">20:00 - 23:59</div>
+          <div class="pt-x2">×2</div>
+        </div>
+        <div class="pt-card d2 card-pop">
+          <div class="pt-day">DAY 2 — 9月5日（土）</div>
+          <div class="pt-date">09 / 05</div>
+          <div class="pt-time">20:00 - 23:59</div>
+          <div class="pt-x2">×2</div>
+        </div>
+      </div>
+      <p class="pt-foot">※ポイントの付与には各種上限・条件があります。詳細は商品ページ・楽天市場の規約をご確認ください。</p>
+    </div>
+  </section>
+
+  <!-- ============ 店内全品クーポン ============ -->
+  <section class="section" id="storewide" style="background:var(--yellow);">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow c-green">STOREWIDE COUPON</span>
+        <h2>期間中ずっと使える、店内全品クーポン</h2>
+        <p class="sub">9/4 20:00〜9/11 1:59、楽天スーパーSALEのあいだはいつでも使えます。</p>
+      </div>
+      <div class="ticket-row reveal">
+        <div class="ticket">
+          <div class="cond">店内 4,000円以上ご購入で</div>
+          <div class="amount">55<span>円 OFF</span></div>
+          <div class="tname">店内全品クーポン</div>
+          <div class="tdesc">先着順・なくなり次第終了。会計時にクーポンを適用してください。</div>
+          <!-- ▼差し替え：クーポン取得URL -->
+          <a class="tget" data-coupon href="#">クーポンを受け取る</a>
+        </div>
+        <div class="ticket">
+          <div class="cond">店内 15,000円以上ご購入で</div>
+          <div class="amount">450<span>円 OFF</span></div>
+          <div class="tname">まとめ買いクーポン</div>
+          <div class="tdesc">先着順・なくなり次第終了。ギフトのまとめ買いにどうぞ。</div>
+          <!-- ▼差し替え：クーポン取得URL -->
+          <a class="tget" data-coupon href="#">クーポンを受け取る</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 対象ショップ限定クーポン ============ -->
+  <section class="bunting" id="coupons">
+    <div class="wrap">
+      <div class="sec-head reveal" style="margin-bottom:20px;">
+        <span class="eyebrow c-orange">SHOP COUPONS</span>
+        <h2 style="font-size:clamp(22px,5vw,30px);">対象ショップ限定クーポン、いろいろ！</h2>
+      </div>
+      <!-- ▼差し替え：各 .flag-slot の中身を <img src="クーポン画像" alt="..."> に。取得URLは <a href> でラップ。枠は増減可 -->
+      <div class="flags reveal">
+        <div class="flag-slot">クーポン画像<br>（後日差し替え）</div>
+        <div class="flag-slot">クーポン画像<br>（後日差し替え）</div>
+        <div class="flag-slot">クーポン画像<br>（後日差し替え）</div>
+        <div class="flag-slot">クーポン画像<br>（後日差し替え）</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ おすすめのお酒（名入れ以外） ============ -->
+  <section class="section" id="recommend" style="background:var(--yellow);">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow c-blue">RECOMMENDED</span>
+        <h2>名入れじゃなくても、いい一本。</h2>
+      </div>
+      <p class="rec-lead">ビール、レモンサワー、ハイボール、ワイン。宴会にも家飲みにも、担当者のおすすめをまとめました。</p>
+      <!-- ▼差し替え：.rec-photo に <img>、.rec-name / .rec-price を実データに。<a href> でラップ。枠は自由に増減 -->
+      <div class="rec-grid reveal">
+        <div class="rec-card card-pop">
+          <div class="rec-photo">商品画像</div>
+          <div class="rec-name">商品名が入ります（1ケース／48本 など）</div>
+          <div class="rec-price">¥0,000</div>
+          <span class="rec-note">ビール</span>
+        </div>
+        <div class="rec-card card-pop">
+          <div class="rec-photo">商品画像</div>
+          <div class="rec-name">商品名が入ります</div>
+          <div class="rec-price">¥0,000</div>
+          <span class="rec-note">レモンサワー</span>
+        </div>
+        <div class="rec-card card-pop">
+          <div class="rec-photo">商品画像</div>
+          <div class="rec-name">商品名が入ります</div>
+          <div class="rec-price">¥0,000</div>
+          <span class="rec-note">ハイボール</span>
+        </div>
+        <div class="rec-card card-pop">
+          <div class="rec-photo">商品画像</div>
+          <div class="rec-name">商品名が入ります</div>
+          <div class="rec-price">¥0,000</div>
+          <span class="rec-note">ワイン</span>
+        </div>
+        <div class="rec-card card-pop">
+          <div class="rec-photo">商品画像</div>
+          <div class="rec-name">商品名が入ります</div>
+          <div class="rec-price">¥0,000</div>
+          <span class="rec-note">新ジャンル</span>
+        </div>
+        <div class="rec-card card-pop">
+          <div class="rec-photo">商品画像</div>
+          <div class="rec-name">商品名が入ります</div>
+          <div class="rec-price">¥0,000</div>
+          <span class="rec-note">日本酒</span>
+        </div>
+        <div class="rec-card card-pop">
+          <div class="rec-photo">商品画像</div>
+          <div class="rec-name">商品名が入ります</div>
+          <div class="rec-price">¥0,000</div>
+          <span class="rec-note">焼酎</span>
+        </div>
+        <div class="rec-card card-pop">
+          <div class="rec-photo">商品画像</div>
+          <div class="rec-name">商品名が入ります</div>
+          <div class="rec-price">¥0,000</div>
+          <span class="rec-note">おつまみ</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CLOSING ============ -->
+  <section class="closing">
+    <div class="wrap">
+      <h2>超お得な7日間、<br>お見逃しなく。</h2>
+      <p>名入れの一本も、いつものビールも。エントリーとクーポンのご準備を忘れずに。</p>
+      <a class="btn-big" href="https://www.rakuten.co.jp/d-craft/" target="_blank" rel="noopener">ドリームクラフト＆ビッグボスをのぞく</a>
+      <div class="devnote">制作メモ（公開前に消す）：①FV看板 images/fv.webp　②クーポン取得URL（data-coupon 属性の要素）　③「対象ショップ限定クーポン」画像　④「おすすめのお酒」実データ　を差し替えてから公開。</div>
+      <footer>ドリームクラフト＆ビッグボス｜楽天スーパーSALE 特設ページ｜2026.9.4 20:00 – 9.11 1:59</footer>
+    </div>
+  </section>
+
+</div><!-- /.page -->
+
+<script>
+(function(){
+  var SALE_START = new Date('2026-09-04T20:00:00+09:00');
+  var SALE_END   = new Date('2026-09-11T01:59:00+09:00');
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function pad(n){ return String(Math.max(0,n)).padStart(2,'0'); }
+
+  /* ---- パタパタ時計（スタッフドラフトのロジックを踏襲） ---- */
+  var tileEls = {};
+  document.querySelectorAll('.fc-tile').forEach(function(el){ tileEls[el.dataset.tile] = el; });
+
+  function setTile(key, digit){
+    var tile = tileEls[key];
+    if(!tile) return;
+    var front = tile.querySelector('.face.front');
+    var back = tile.querySelector('.face.back');
+    if(front.textContent === digit) return;
+    if(reduceMotion){ front.textContent = digit; return; }
+    back.textContent = digit;
+    tile.classList.add('flip');
+    var inner = tile.querySelector('.flip-inner');
+    var done = function(){
+      inner.removeEventListener('transitionend', done);
+      inner.style.transition = 'none';
+      tile.classList.remove('flip');
+      front.textContent = digit;
+      void inner.offsetWidth;
+      inner.style.transition = '';
+    };
+    inner.addEventListener('transitionend', done);
+  }
+
+  function updateMain(){
+    var now = new Date();
+    var target, stateText;
+    if(now < SALE_START){ target = SALE_START; stateText = '楽天スーパーSALE開始まであと'; }
+    else if(now < SALE_END){ target = SALE_END; stateText = '楽天スーパーSALE終了まであと'; }
+    else { target = null; stateText = '楽天スーパーSALEは終了しました'; }
+    document.getElementById('mainState').textContent = stateText;
+
+    var ms = target ? Math.max(0, target - now) : 0;
+    var totalSeconds = Math.floor(ms/1000);
+    var d = pad(Math.floor(totalSeconds/86400));
+    var h = pad(Math.floor((totalSeconds%86400)/3600));
+    var m = pad(Math.floor((totalSeconds%3600)/60));
+    var s = pad(totalSeconds%60);
+    setTile('d0', d[0]); setTile('d1', d[1]);
+    setTile('h0', h[0]); setTile('h1', h[1]);
+    setTile('m0', m[0]); setTile('m1', m[1]);
+    setTile('s0', s[0]); setTile('s1', s[1]);
+  }
+  updateMain();
+  setInterval(updateMain, 1000);
+
+  /* ---- スクロールで各セクションをふわっと表示（フォールバック付き） ---- */
+  var revealEls = [].slice.call(document.querySelectorAll('.reveal'));
+  function revealNearViewport(){
+    for(var i=revealEls.length-1; i>=0; i--){
+      var el = revealEls[i];
+      var r = el.getBoundingClientRect();
+      if(r.top < window.innerHeight * 1.15 && r.bottom > -80){
+        el.classList.add('in');
+        revealEls.splice(i,1);
+      }
+    }
+  }
+  if(reduceMotion){
+    revealEls.forEach(function(el){ el.classList.add('in'); });
+    revealEls = [];
+  } else {
+    if('IntersectionObserver' in window){
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+      }, {threshold:0, rootMargin:'0px 0px -40px 0px'});
+      revealEls.forEach(function(el){ io.observe(el); });
+    }
+    /* IOが発火しない環境・裏タブ対策：スクロール/リサイズ/ロードでも判定 */
+    revealNearViewport();
+    window.addEventListener('scroll', revealNearViewport, {passive:true});
+    window.addEventListener('resize', revealNearViewport, {passive:true});
+    window.addEventListener('load', revealNearViewport);
+    /* 最後の保険：4秒後に残りを全表示 */
+    setTimeout(function(){ revealEls.forEach(function(el){ el.classList.add('in'); }); revealEls = []; }, 4000);
+  }
+
+  /* ---- FVのシャインスイープ（ランダム間隔） ---- */
+  var fvMedia = document.getElementById('fvMedia');
+  if(fvMedia && !reduceMotion){
+    var runShine = function(){
+      fvMedia.classList.add('shine');
+      setTimeout(function(){ fvMedia.classList.remove('shine'); }, 1400);
+      setTimeout(runShine, 2800 + Math.random()*3600);
+    };
+    setTimeout(runShine, 1600);
+  }
+
+  /* ---- クーポン取得URLの一括反映（未定の間は # のまま） ---- */
+  var COUPON_URL = ''; /* 例: 'https://coupon.rakuten.co.jp/getCoupon?getkey=xxxx&rt=' */
+  if(COUPON_URL){
+    document.querySelectorAll('[data-coupon]').forEach(function(a){
+      a.setAttribute('href', COUPON_URL);
+      a.setAttribute('target', '_blank');
+      a.setAttribute('rel', 'noopener');
+    });
+  }
+
+  /* ---- ハンバーガーメニュー ---- */
+  var navToggle = document.getElementById('navToggle');
+  var navPanel = document.getElementById('navPanel');
+  function closeNav(){ navToggle.setAttribute('aria-expanded','false'); navPanel.classList.remove('open'); }
+  navToggle.addEventListener('click', function(){
+    var open = navToggle.getAttribute('aria-expanded') === 'true';
+    navToggle.setAttribute('aria-expanded', open ? 'false' : 'true');
+    navPanel.classList.toggle('open', !open);
+  });
+  navPanel.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', closeNav); });
+  document.addEventListener('click', function(e){
+    if(!navPanel.contains(e.target) && !navToggle.contains(e.target)) closeNav();
+  });
+})();
+</script>
+</body>
+</html>
