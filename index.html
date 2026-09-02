@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ドリームクラフト＆ビッグボス｜楽天スーパーSALE 名入れのお酒</title>
+<title>ドリームクラフト＆ビッグボス｜楽天スーパーSALE 特設ページ</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700;800;900&display=swap" rel="stylesheet">
@@ -255,6 +255,54 @@
   .btn-big:active{ transform:translateY(4px); box-shadow:3px 3px 0 rgba(0,0,0,.35); }
   .cd-bubble{ font-weight:700; }
 
+  /* ============ クーポン画像スロット（カウントダウン直下） ============ */
+  .coupon-slot{ background:var(--yellow); padding:30px 0 4px; text-align:center; }
+  .coupon-slot .frame{
+    margin:0 auto; max-width:600px; aspect-ratio:3/1;
+    border:3px dashed var(--ink); border-radius:16px;
+    display:flex; align-items:center; justify-content:center; padding:14px;
+    background:
+      repeating-linear-gradient(135deg, rgba(26,18,6,.08) 0 2px, transparent 2px 16px),
+      #fff;
+    font-size:13px; font-weight:700; color:var(--ink); line-height:1.7;
+  }
+  .coupon-slot .frame img{ width:100%; height:100%; object-fit:contain; }
+
+  /* ============ 人気商品 / ビールギフト（横スクロール棚） ============ */
+  .shelf{ background:var(--yellow); padding:50px 0 46px; }
+  .shelf.popular{ border-bottom:4px solid var(--ink); }
+  .shelf.beergift{ border-top:5px solid var(--ink); }
+  .shelf .sec-head{ margin-bottom:20px; }
+  .shelf .kicker{
+    margin-top:12px; display:inline-block;
+    background:var(--red); color:#fff; font-family:var(--font-pop); font-weight:800;
+    font-size:15px; padding:8px 20px; border-radius:999px; line-height:1.4;
+  }
+  .hscroll{
+    display:flex; gap:14px; overflow-x:auto;
+    padding:6px 24px 14px; scroll-snap-type:x proximity; scrollbar-width:thin;
+  }
+  @media (max-width:600px){ .hscroll{ padding-left:17px; padding-right:17px; } }
+  .hscroll::-webkit-scrollbar{ height:8px; }
+  .hscroll::-webkit-scrollbar-track{ background:rgba(26,18,6,.12); border-radius:99px; }
+  .hscroll::-webkit-scrollbar-thumb{ background:rgba(26,18,6,.4); border-radius:99px; }
+  .hcard{
+    flex:0 0 180px; scroll-snap-align:start;
+    display:flex; flex-direction:column;
+    background:#fff; border:3px solid var(--ink); border-radius:14px; overflow:hidden;
+  }
+  .hcard img{ width:100%; aspect-ratio:1/1; object-fit:cover; border-bottom:3px solid var(--ink); background:var(--paper-2); }
+  .hcard .hbody{ padding:11px 12px 13px; display:flex; flex-direction:column; gap:6px; flex:1; }
+  .hcard .hname{ font-size:12.5px; font-weight:500; line-height:1.6; color:var(--ink); }
+  .hcard .hmeta{ margin-top:auto; display:flex; align-items:baseline; justify-content:space-between; gap:6px; }
+  .hcard .hprice{ font-family:var(--font-num); font-weight:700; font-size:16px; color:var(--red); }
+  .hcard .hprice small{ font-size:.62em; font-weight:600; color:var(--ink); opacity:.7; margin-left:1px; }
+  .hcard .hrev{ font-size:11px; font-weight:700; color:var(--ink); opacity:.65; white-space:nowrap; }
+  .hcard .hrev.none{ visibility:hidden; }
+  .shelf .scroll-hint{ text-align:center; font-size:12.5px; font-weight:700; color:var(--ink); opacity:.55; margin-top:4px; }
+  .shelf .shelf-all{ text-align:center; margin-top:24px; }
+  .shelf .btn-big{ background:var(--red); color:#fff; }
+
   /* ============ CLOSING / FOOTER ============ */
   .closing{ background:var(--ink); color:var(--yellow); text-align:center; padding:56px 0 30px; }
   .closing h2{ font-family:var(--font-pop); font-weight:800; font-size:clamp(26px,6vw,36px); line-height:1.45; }
@@ -320,6 +368,93 @@
             <div class="fc-label">秒</div>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ クーポン画像（カウントダウン直下・後日差し替え） ============ -->
+  <section class="coupon-slot">
+    <div class="wrap">
+      <!-- ▼差し替え：クーポン画像。<a href="取得URL"> でラップ可 -->
+      <div class="frame">クーポン画像（後日ここに差し込み）</div>
+    </div>
+  </section>
+
+  <!-- ============ 人気の商品（売れ筋・横スクロール） ============ -->
+  <section class="shelf popular">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">BEST SELLERS</span>
+        <h2>人気の商品をチェック！</h2>
+        <span class="kicker">楽天スーパーSALE中がお得！</span>
+      </div>
+    </div>
+    <div class="hscroll">
+      <a class="hcard" href="https://item.rakuten.co.jp/d-craft/4901880884147-nsi/" target="_blank" rel="noopener">
+        <img src="https://tshop.r10s.jp/d-craft/cabinet/c52/4901880216528.jpg?_ex=400x400" alt="サッポロ ヱビス ビール飲み比べギフト YDF3D" loading="lazy">
+        <div class="hbody"><div class="hname">サッポロ ヱビス ビール飲み比べギフト YDF3D</div>
+          <div class="hmeta"><span class="hprice">2,965<small>円</small></span><span class="hrev">★4.9(15)</span></div></div>
+      </a>
+      <a class="hcard" href="https://item.rakuten.co.jp/d-craft/4901777433434-f1/" target="_blank" rel="noopener">
+        <img src="https://tshop.r10s.jp/d-craft/cabinet/c51/4901777433434-f1_c0.jpg?_ex=400x400" alt="サントリー 伊右衛門 ゆず茶 600ml×24本" loading="lazy">
+        <div class="hbody"><div class="hname">サントリー 伊右衛門 ゆず茶 600ml×24本</div>
+          <div class="hmeta"><span class="hprice">2,998<small>円</small></span><span class="hrev">★5.0(8)</span></div></div>
+      </a>
+      <a class="hcard" href="https://item.rakuten.co.jp/d-craft/4901777331488-y-1/" target="_blank" rel="noopener">
+        <img src="https://tshop.r10s.jp/d-craft/cabinet/c53/4901777331488-y-1.jpg?_ex=400x400" alt="サントリー 特茶 500ml 計24本（お試し付）" loading="lazy">
+        <div class="hbody"><div class="hname">サントリー 特茶 500ml 計24本（お試し付）</div>
+          <div class="hmeta"><span class="hprice">3,827<small>円</small></span><span class="hrev">★4.7(37)</span></div></div>
+      </a>
+      <a class="hcard" href="https://item.rakuten.co.jp/d-craft/2115960000088/" target="_blank" rel="noopener">
+        <img src="https://tshop.r10s.jp/d-craft/cabinet/c53/2115960000088.jpg?_ex=400x400" alt="ボジョレー ヌーボー 2026 3本セット（グラス付）" loading="lazy">
+        <div class="hbody"><div class="hname">ボジョレー ヌーボー 2026 3本セット（グラス付・予約）</div>
+          <div class="hmeta"><span class="hprice">11,699<small>円</small></span><span class="hrev">★5.0(2)</span></div></div>
+      </a>
+      <a class="hcard" href="https://item.rakuten.co.jp/d-craft/4901777185272-asf3/" target="_blank" rel="noopener">
+        <img src="https://tshop.r10s.jp/d-craft/cabinet/20260819sucp/4901777185272-f3.jpg?_ex=400x400" alt="サントリー 金麦 350ml×72本（3箱）" loading="lazy">
+        <div class="hbody"><div class="hname">サントリー 金麦 350ml×72本（3箱）</div>
+          <div class="hmeta"><span class="hprice">11,998<small>円</small></span><span class="hrev">★4.3(8)</span></div></div>
+      </a>
+      <a class="hcard" href="https://item.rakuten.co.jp/d-craft/4904230073864-f1/" target="_blank" rel="noopener">
+        <img src="https://tshop.r10s.jp/d-craft/cabinet/c48/4904230073864-f1_c0.jpg?_ex=400x400" alt="アサヒ 未来のレモンサワー 345ml×24本" loading="lazy">
+        <div class="hbody"><div class="hname">アサヒ 未来のレモンサワー 345ml×24本</div>
+          <div class="hmeta"><span class="hprice">6,498<small>円</small></span><span class="hrev">★4.0(2)</span></div></div>
+      </a>
+      <a class="hcard" href="https://item.rakuten.co.jp/d-craft/itoen-yoridori48/" target="_blank" rel="noopener">
+        <img src="https://tshop.r10s.jp/d-craft/cabinet/c53/yori_itoen_200_48.jpg?_ex=400x400" alt="伊藤園 野菜ジュース よりどり 200ml×48本" loading="lazy">
+        <div class="hbody"><div class="hname">伊藤園 野菜ジュース よりどり 200ml×48本</div>
+          <div class="hmeta"><span class="hprice">4,798<small>円</small></span><span class="hrev">★4.6(50)</span></div></div>
+      </a>
+      <a class="hcard" href="https://item.rakuten.co.jp/d-craft/4901777378124/" target="_blank" rel="noopener">
+        <img src="https://tshop.r10s.jp/d-craft/cabinet/c52/4901777447554-99.jpg?_ex=400x400" alt="サントリー 響 BLOSSOM HARMONY 2026 700ml" loading="lazy">
+        <div class="hbody"><div class="hname">サントリー 響 BLOSSOM HARMONY 2026 700ml（箱付）</div>
+          <div class="hmeta"><span class="hprice">25,300<small>円</small></span><span class="hrev">★5.0(2)</span></div></div>
+      </a>
+      <a class="hcard" href="https://item.rakuten.co.jp/d-craft/4901777377127/" target="_blank" rel="noopener">
+        <img src="https://tshop.r10s.jp/d-craft/cabinet/c52/4901777448698.jpg?_ex=400x400" alt="サントリー 山崎 2026 700ml（箱付）" loading="lazy">
+        <div class="hbody"><div class="hname">サントリー 山崎 2026 700ml（箱付）</div>
+          <div class="hmeta"><span class="hprice">24,888<small>円</small></span><span class="hrev none">-</span></div></div>
+      </a>
+      <a class="hcard" href="https://item.rakuten.co.jp/d-craft/4901411052809-f1/" target="_blank" rel="noopener">
+        <img src="https://tshop.r10s.jp/d-craft/cabinet/c15/052809.jpg?_ex=400x400" alt="ホワイトホース ファインオールド 700ml×12本" loading="lazy">
+        <div class="hbody"><div class="hname">ホワイトホース ファインオールド 700ml×12本ケース</div>
+          <div class="hmeta"><span class="hprice">13,699<small>円</small></span><span class="hrev">★4.7(6)</span></div></div>
+      </a>
+      <a class="hcard" href="https://item.rakuten.co.jp/d-craft/2180070000044/" target="_blank" rel="noopener">
+        <img src="https://tshop.r10s.jp/d-craft/cabinet/c46/2180070000044_c0.jpg?_ex=400x400" alt="究極のハイボール缶 24種 飲み比べセット" loading="lazy">
+        <div class="hbody"><div class="hname">究極のハイボール缶 24種 飲み比べセット</div>
+          <div class="hmeta"><span class="hprice">6,387<small>円</small></span><span class="hrev none">-</span></div></div>
+      </a>
+      <a class="hcard" href="https://item.rakuten.co.jp/d-craft/10002752/" target="_blank" rel="noopener">
+        <img src="https://tshop.r10s.jp/d-craft/cabinet/c16/pin12-600.jpg?_ex=400x400" alt="菊正宗 ピン 辛口 2L×12本" loading="lazy">
+        <div class="hbody"><div class="hname">菊正宗 ピン 辛口 日本酒パック 2L×12本</div>
+          <div class="hmeta"><span class="hprice">13,899<small>円</small></span><span class="hrev">★5.0(14)</span></div></div>
+      </a>
+    </div>
+    <p class="scroll-hint">← 横にスクロールできます →</p>
+    <div class="wrap">
+      <div class="shelf-all">
+        <a class="btn-big" href="https://search.rakuten.co.jp/search/mall/?su=d-craft&sv=6&f=A&vc=1&sid=296346" target="_blank" rel="noopener">売れ筋ランキングをもっと見る</a>
       </div>
     </div>
   </section>
@@ -543,14 +678,63 @@
     </div>
   </div>
 
+  <!-- ============ ビールギフト（横スクロール棚） ============ -->
+  <section class="shelf beergift">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">BEER GIFT</span>
+        <h2>ビールギフトも人気です</h2>
+        <span class="kicker">飲み比べセットが贈り物に◎</span>
+      </div>
+    </div>
+    <div class="hscroll">
+      <a class="hcard" href="https://item.rakuten.co.jp/d-craft/4901004045874/" target="_blank" rel="noopener">
+        <img src="https://tshop.r10s.jp/d-craft/cabinet/c52/4901004045874_c0.jpg?_ex=400x400" alt="アサヒ ATH-3 ビール5種12缶 飲み比べギフト" loading="lazy">
+        <div class="hbody"><div class="hname">アサヒ ATH-3 ビール5種12缶 飲み比べギフト</div>
+          <div class="hmeta"><span class="hprice">2,965<small>円</small></span><span class="hrev">★4.5(44)</span></div></div>
+      </a>
+      <a class="hcard" href="https://item.rakuten.co.jp/d-craft/4901777323834/" target="_blank" rel="noopener">
+        <img src="https://tshop.r10s.jp/d-craft/cabinet/c52/4901777323834_c0.jpg?_ex=400x400" alt="サントリー プレミアムモルツ BML3BS 7種11缶ギフト" loading="lazy">
+        <div class="hbody"><div class="hname">サントリー ザ・プレミアム・モルツ 7種11缶ギフト</div>
+          <div class="hmeta"><span class="hprice">2,898<small>円</small></span><span class="hrev">★4.6(13)</span></div></div>
+      </a>
+      <a class="hcard" href="https://item.rakuten.co.jp/d-craft/4901880859725/" target="_blank" rel="noopener">
+        <img src="https://tshop.r10s.jp/d-craft/cabinet/c52/4901880859725_fa_0.jpg?_ex=400x400" alt="サッポロ 黒ラベル KS3D ビールギフト" loading="lazy">
+        <div class="hbody"><div class="hname">サッポロ 生ビール 黒ラベル KS3D ギフト</div>
+          <div class="hmeta"><span class="hprice">2,968<small>円</small></span><span class="hrev">★4.2(11)</span></div></div>
+      </a>
+      <a class="hcard" href="https://item.rakuten.co.jp/d-craft/4901004018601/" target="_blank" rel="noopener">
+        <img src="https://tshop.r10s.jp/d-craft/cabinet/c52/4901004008367.jpg?_ex=400x400" alt="アサヒ スーパードライ AS-5N ビールギフト 21缶" loading="lazy">
+        <div class="hbody"><div class="hname">アサヒ スーパードライ AS-5N ギフト 21缶</div>
+          <div class="hmeta"><span class="hprice">4,798<small>円</small></span><span class="hrev">★4.8(32)</span></div></div>
+      </a>
+      <a class="hcard" href="https://item.rakuten.co.jp/d-craft/4901004046369/" target="_blank" rel="noopener">
+        <img src="https://tshop.r10s.jp/d-craft/cabinet/c50/4901004046369.jpg?_ex=400x400" alt="アサヒ スーパードライ 飛び出す誕生日メッセージ AS-BG" loading="lazy">
+        <div class="hbody"><div class="hname">アサヒ スーパードライ 飛び出す誕生日メッセージ</div>
+          <div class="hmeta"><span class="hprice">3,159<small>円</small></span><span class="hrev">★4.4(16)</span></div></div>
+      </a>
+      <a class="hcard" href="https://item.rakuten.co.jp/d-craft/4901004056122/" target="_blank" rel="noopener">
+        <img src="https://tshop.r10s.jp/d-craft/cabinet/c52/4901004056122_c0.jpg?_ex=400x400" alt="アサヒ AVQ-2 ビール4種8缶 飲み比べギフト" loading="lazy">
+        <div class="hbody"><div class="hname">アサヒ AVQ-2 ビール4種8缶 飲み比べギフト</div>
+          <div class="hmeta"><span class="hprice">2,297<small>円</small></span><span class="hrev">★5.0(2)</span></div></div>
+      </a>
+    </div>
+    <p class="scroll-hint">← 横にスクロールできます →</p>
+    <div class="wrap">
+      <div class="shelf-all">
+        <a class="btn-big" href="https://search.rakuten.co.jp/search/mall/%E3%83%93%E3%83%BC%E3%83%AB%20%E3%82%AE%E3%83%95%E3%83%88/?sid=296346" target="_blank" rel="noopener">ビールギフトをもっと見る</a>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ CLOSING ============ -->
   <section class="closing">
     <div class="wrap">
-      <h2>大切なあの人に、<br>名前を贈る。</h2>
-      <p>楽天スーパーSALEのあいだは、名入れ商品がクーポンで10%OFF。この機会にどうぞ。</p>
+      <h2>人気の一本も、<br>名前を贈る一本も。</h2>
+      <p>売れ筋のお酒からお得に、名入れギフトはクーポンで10%OFF。楽天スーパーSALEのあいだにどうぞ。</p>
       <a class="btn-big" href="https://www.rakuten.co.jp/d-craft/" target="_blank" rel="noopener">ドリームクラフト＆ビッグボスをのぞく</a>
-      <div class="devnote">制作メモ（公開前に消す）：①クーポン取得URL（&lt;script&gt;内の COUPON_URL に入れると data-coupon 要素へ一括反映）を差し替えてから公開。</div>
-      <footer>ドリームクラフト＆ビッグボス｜楽天スーパーSALE 名入れのお酒｜2026.9.4 20:00 – 9.11 1:59</footer>
+      <div class="devnote">制作メモ（公開前に消す）：①カウントダウン直下の「クーポン画像」を差し込み　②クーポン取得URL（&lt;script&gt;内の COUPON_URL に入れると data-coupon 要素へ一括反映）　を差し替えてから公開。</div>
+      <footer>ドリームクラフト＆ビッグボス｜楽天スーパーSALE 特設ページ｜2026.9.4 20:00 – 9.11 1:59</footer>
     </div>
   </section>
 
