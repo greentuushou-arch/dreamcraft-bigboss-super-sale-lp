@@ -25,9 +25,11 @@
     --blue-deep:#143a95;
     --green:#2f9e52;       /* スカーフの緑 */
     --orange:#f0803c;      /* アロハシャツのオレンジ */
+    --orange-bg:#d1571a;   /* 名入れセクションの下地。白文字が読める深めのオレンジ */
     --ink:#1a1206;         /* 太アウトラインの黒 */
     --paper:#fffdf2;       /* カード内の生成り */
     --paper-2:#f4ecd8;
+    --beige:#efe4cd;       /* 両脇（キャンバス外）の下地 */
 
     /* タイトル等は Zen Kaku Gothic New（太め）で統一。数字のみ Fredoka */
     --font-pop:'Zen Kaku Gothic New','Hiragino Sans',sans-serif;
@@ -39,7 +41,7 @@
   html,body{ margin:0; padding:0; }
   html{ scroll-behavior:auto; scroll-padding-top:72px; }
   body{
-    background:var(--yellow);
+    background:var(--beige);
     color:var(--ink);
     font-family:var(--font-body);
     line-height:1.75;
@@ -205,15 +207,15 @@
   .bubble p:last-child{ margin-bottom:0; }
 
   /* ============ 名入れ（主役） ============ */
-  .naire{ background:var(--blue); color:#fff; padding:4px 0 0; }
+  .naire{ background:var(--orange-bg); color:#fff; padding:4px 0 0; }
   .naire .section{ padding:56px 0 8px; }
   .naire .sec-head h2{ color:#fff; }
-  .naire .sec-head .sub{ color:#fff; opacity:.9; }
+  .naire .sec-head .sub{ color:#fff; opacity:.95; }
   .naire .eyebrow{ color:#fff; }
   .naire .eyebrow::before{ background:var(--yellow); }
   .naire .intro{
     max-width:30em; margin:0 auto 8px; text-align:center;
-    font-size:16px; font-weight:700; line-height:1.9; color:rgba(255,255,255,.92);
+    font-size:16px; font-weight:700; line-height:1.9; color:#fff;
   }
 
   /* 名入れクーポン10%OFF スポットライト */
@@ -230,7 +232,7 @@
   .engrave .note{ margin-top:16px; font-size:12px; opacity:.6; }
 
   /* 名入れ商品グループ */
-  .naire-groups{ background:var(--blue); padding:14px 0 56px; }
+  .naire-groups{ background:var(--orange-bg); padding:14px 0 56px; }
   .ngroup{ margin-top:40px; }
   .ngroup:first-child{ margin-top:8px; }
   .ngroup-head{
