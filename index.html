@@ -270,19 +270,15 @@
   .coupon-pair .placeholder{ aspect-ratio:1.9/1; border:3px dashed var(--ink); border-radius:14px; }
   .coupon-pair a{ display:block; }
   .coupon-pair img{ width:100%; height:auto; display:block; }
-  /* 下段：細い帯クーポンを3段（角丸なし・そのまま貼る） */
-  .coupon-bands{ display:flex; flex-direction:column; gap:8px; margin-top:14px; }
+  /* 下段：細い帯クーポンを3段。各帯にタイトル＋画像（角丸なし・そのまま貼る） */
+  .coupon-bands{ display:flex; flex-direction:column; gap:20px; margin-top:16px; }
+  .coupon-bands .band-title{
+    margin:0 0 7px; font-size:14.5px; font-weight:800; line-height:1.55; color:var(--ink);
+  }
+  .coupon-bands .band-title a{ color:var(--red-deep); text-decoration:underline; text-underline-offset:3px; }
   .coupon-bands a{ display:block; }
   .coupon-bands img{ width:100%; height:auto; display:block; border-radius:0; }
   .coupon-bands .placeholder{ aspect-ratio:1080/210; border:2px dashed var(--ink); border-radius:0; }
-  .coupon-note{
-    margin:16px auto 0; max-width:36em; text-align:center;
-    font-size:14.5px; font-weight:700; line-height:1.7; color:var(--ink);
-  }
-  .coupon-note a{
-    display:inline-block; margin-top:4px;
-    color:var(--red-deep); font-weight:800; text-decoration:underline; text-underline-offset:3px;
-  }
 
   /* ============ 人気商品 / ビールギフト（横スクロール棚） ============ */
   .shelf{ background:var(--yellow); padding:50px 0 46px; }
@@ -398,19 +394,23 @@
         <div class="placeholder">クーポン画像②<br>（後日ここに）</div>
       </div>
 
-      <!-- 下段：細い帯クーポン3段（角丸なし・画像そのまま。①のみ入稿済み） -->
+      <!-- 下段：細い帯クーポン3段。各帯にタイトル＋画像（角丸なし・画像そのまま。①のみ入稿済み） -->
       <div class="coupon-bands">
-        <a href="https://maker-showroom.rakuten.co.jp/sapporo/?l-id=adsol_2429_shop_d-craft" target="_blank" rel="noopener">
-          <img src="images/coupon-band-sapporo.jpg" alt="対象アイテムに使える 最大300円OFFクーポン｜サッポロ ※獲得・利用条件あり">
-        </a>
-        <div class="placeholder">帯クーポン②（後日ここに）</div>
-        <div class="placeholder">帯クーポン③（後日ここに）</div>
+        <div class="band">
+          <p class="band-title"><a href="https://maker-showroom.rakuten.co.jp/sapporo/?l-id=adsol_2429_shop_d-craft" target="_blank" rel="noopener">サッポロのキャンペーン300円OFFクーポンもあります！</a></p>
+          <a href="https://maker-showroom.rakuten.co.jp/sapporo/?l-id=adsol_2429_shop_d-craft" target="_blank" rel="noopener">
+            <img src="images/coupon-band-sapporo.jpg" alt="対象アイテムに使える 最大300円OFFクーポン｜サッポロ ※獲得・利用条件あり">
+          </a>
+        </div>
+        <div class="band">
+          <p class="band-title">帯クーポン②のタイトル（後日）</p>
+          <div class="placeholder">帯クーポン②（後日ここに）</div>
+        </div>
+        <div class="band">
+          <p class="band-title">帯クーポン③のタイトル（後日）</p>
+          <div class="placeholder">帯クーポン③（後日ここに）</div>
+        </div>
       </div>
-
-      <p class="coupon-note">
-        サッポロのキャンペーン300円OFFクーポンもあります！<br>
-        <a href="https://maker-showroom.rakuten.co.jp/sapporo/?l-id=adsol_2429_shop_d-craft" target="_blank" rel="noopener">サッポロ特設ページでクーポンをGET ▶</a>
-      </p>
 
     </div>
   </section>
