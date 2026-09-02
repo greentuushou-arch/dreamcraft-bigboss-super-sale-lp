@@ -191,15 +191,15 @@
   .bubble p:last-child{ margin-bottom:0; }
 
   /* ============ 名入れ（主役） ============ */
-  .naire{ background:var(--naire-bg); color:var(--ink); padding:4px 0 0; }
+  .naire{ background:var(--naire-bg); color:#fff; padding:4px 0 0; }
   .naire .section{ padding:56px 0 8px; }
-  .naire .sec-head h2{ color:var(--ink); }
-  .naire .sec-head .sub{ color:var(--ink); opacity:1; font-weight:500; }
-  .naire .eyebrow{ color:var(--ink); }
-  .naire .eyebrow::before{ background:var(--ink); }
+  .naire .sec-head h2{ color:#fff; }
+  .naire .sec-head .sub{ color:#fff; opacity:.95; font-weight:500; }
+  .naire .eyebrow{ color:#fff; }
+  .naire .eyebrow::before{ background:var(--yellow); }
   .naire .intro{
     max-width:30em; margin:0 auto 8px; text-align:center;
-    font-size:16.5px; font-weight:500; line-height:1.95; color:var(--ink);
+    font-size:16.5px; font-weight:500; line-height:1.95; color:#fff;
   }
 
   /* 名入れクーポン10%OFF スポットライト */
@@ -228,10 +228,10 @@
   .ngroup-head{
     display:flex; align-items:baseline; gap:12px; flex-wrap:wrap;
     padding-bottom:12px; margin-bottom:20px;
-    border-bottom:3px solid rgba(26,18,6,.28);
+    border-bottom:3px solid rgba(255,255,255,.35);
   }
-  .ngroup-head h3{ font-family:var(--font-pop); font-weight:800; font-size:clamp(20px,4.6vw,26px); color:var(--ink); }
-  .ngroup-head .en{ font-family:var(--font-body); font-size:13px; letter-spacing:.02em; color:var(--ink); opacity:.75; font-weight:700; }
+  .ngroup-head h3{ font-family:var(--font-pop); font-weight:800; font-size:clamp(20px,4.6vw,26px); color:#fff; }
+  .ngroup-head .en{ font-family:var(--font-body); font-size:13px; letter-spacing:.02em; color:var(--yellow); opacity:1; font-weight:700; }
 
   .pgrid{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
   @media (max-width:640px){ .pgrid{ grid-template-columns:repeat(2,1fr); gap:13px; } }
