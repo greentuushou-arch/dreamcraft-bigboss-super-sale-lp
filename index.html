@@ -262,6 +262,15 @@
   .coupon-pair > *{ border-radius:14px; overflow:hidden; }
   .coupon-pair a{ display:block; }
   .coupon-pair img{ width:100%; height:auto; display:block; }
+  /* 配布終了したクーポン：バナーをグレーダウンし「終了しました。」を重ねて表示 */
+  .coupon-ended{ position:relative; }
+  .coupon-ended img{ filter:grayscale(1) brightness(.92) opacity(.55); }
+  .coupon-ended .ended-label{
+    position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+    background:rgba(70,70,70,.5);
+    color:#fff; font-family:var(--font-pop); font-weight:800;
+    font-size:clamp(15px,4.4vw,24px); letter-spacing:.04em;
+  }
   /* 下段：細い帯クーポンを3段。各帯にタイトル＋画像（角丸なし） */
   .coupon-bands{ display:flex; flex-direction:column; gap:20px; margin-top:16px; }
   .coupon-bands .band-title{
@@ -390,15 +399,16 @@
 
       <!-- 上段：店内全品クーポンを2つ横並び（角丸OK） -->
       <div class="coupon-pair">
-        <a href="https://coupon.rakuten.co.jp/getCoupon?getkey=NjAyRS1QMTRELVhZSFgtR0RKRg--&rt=" target="_blank" rel="noopener">
-          <img src="images/coupon-55off.jpg" alt="いつものお酒も！店内4,000円以上のお買い上げで 先着55円OFFクーポン 9/4 20:00〜9/11 1:59 ※無くなり次第終了">
-        </a>
+        <div class="coupon-ended">
+          <img src="images/coupon-55off.jpg" alt="いつものお酒も！店内4,000円以上のお買い上げで 先着55円OFFクーポン（配布終了）">
+          <span class="ended-label">終了しました。</span>
+        </div>
         <a href="https://coupon.rakuten.co.jp/getCoupon?getkey=TEtSUS0zQ0RZLUYwSkstOEpOQg--&rt=" target="_blank" rel="noopener">
           <img src="images/coupon-450off.jpg" alt="まとめ買いに！店内15,000円以上のお買い上げで 先着450円OFFクーポン 9/4 20:00〜9/11 1:59 ※無くなり次第終了">
         </a>
       </div>
 
-      <!-- 下段：細い帯クーポン3段。各帯にタイトル＋画像（角丸なし・画像そのまま。①のみ入稿済み） -->
+      <!-- 下段：細い帯クーポン。各帯にタイトル＋画像（角丸なし・画像そのまま） -->
       <div class="coupon-bands">
         <div class="band">
           <p class="band-title"><a href="https://maker-showroom.rakuten.co.jp/sapporo/?l-id=adsol_2429_shop_d-craft" target="_blank" rel="noopener">サッポロのキャンペーン300円OFFクーポンもあります！</a></p>
@@ -410,12 +420,6 @@
           <p class="band-title"><a href="https://maker-showroom.rakuten.co.jp/suntory/rtd/?l-id=adsol_2452_shop_d-craft" target="_blank" rel="noopener">サントリーキャンペーンエントリーはこちら</a></p>
           <a href="https://maker-showroom.rakuten.co.jp/suntory/rtd/?l-id=adsol_2452_shop_d-craft" target="_blank" rel="noopener">
             <img src="images/coupon-band-suntory.jpg" alt="エントリー＆対象アイテム購入で ポイント最大5倍｜サントリー ※条件あり">
-          </a>
-        </div>
-        <div class="band">
-          <p class="band-title"><a href="https://event.rakuten.co.jp/food/coupon/supersale/" target="_blank" rel="noopener">先着！最大200円OFFクーポンもチェック</a></p>
-          <a href="https://event.rakuten.co.jp/food/coupon/supersale/" target="_blank" rel="noopener">
-            <img src="images/coupon-band-fooddrink.jpg" alt="対象ショップ限定 最大200円OFFクーポン 食品・スイーツ・お酒・ソフトドリンクで使える 9/4 20:00〜9/11 1:59">
           </a>
         </div>
       </div>
